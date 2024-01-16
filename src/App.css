@@ -1,17 +1,30 @@
 :root {
-    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-style: normal;
     font-weight: 400;
+    line-height: 24px;
 
-    /*color-scheme: light dark;*/
-    /*color: rgba(255, 255, 255, 0.87);*/
-    /*background-color: #242424;*/
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    --Black-10: #0000001A;
+    --Black-65: #000000A6;
+    --Grey-50: #EBEEF5;
+    --Grey-200: #A8AEBF;
+    --Grey-300: #8E95A9;
+    --Grey-600: #475069;
+    --Grey-700: #323B54;
+    --Grey-900: #121829;
+    --Primary-400: #7B6EF6;
+    --Primary-500: #5A4AF4;
+    --Primary-800: #251E62;
+    --Secondary-500: #1EA5FC;
+    --Secondary-800: #0C4265;
+    --Success-400: #37D8A7;
+    --Success-800: #02523A;
+    --Tertary-800: #492C66;
+    --Warning-500: #FFAD49;
+    --White-100: #FFFFFF;
 }
 
 body {
-    background: var(--Grey-900, #121829);
+    background: var(--Grey-900);
 }
