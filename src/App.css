@@ -25,6 +25,10 @@
     --White-100: #FFFFFF;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     background: var(--Grey-900);
 }

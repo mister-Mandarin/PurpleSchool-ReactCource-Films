@@ -2,12 +2,17 @@ import './App.css';
 import Button from './Button/Button.jsx';
 import HeadTitle from './HeadTitle/HeadTitle.jsx';
 import HeaderDescription from './HeaderDescription/HeaderDescription.jsx';
+import Input from './Input/Input.jsx';
+import Layout from './Layout/Layout.jsx';
 
 export default function App() {
 
 	return (
 		<>
-			<Button name={'Искать'} />
+			<Layout />
+			<Input placeholder='Введите название' icon={true}/>
+
+			<Button name={'Искать'} onClick={() => console.log('Меня нажали!')}/>
 			<HeadTitle Tag={'h1'} className={'big'} text={'Вход'} />
 			<HeaderDescription className={'description-title'} text={'Введите название фильма, сериала или мультфильма для поиска и добавления в избранное.'} />
 
