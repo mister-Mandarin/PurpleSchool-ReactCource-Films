@@ -1,0 +1,69 @@
+.card {
+    max-width: 282px;
+    padding: 8px 8px 16px 8px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 12px;
+    background: var(--Black-80);
+    backdrop-filter: blur(40px);
+
+    position: relative;
+}
+
+.card > img {
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+.card > span {
+    color: var(--Grey-50);
+    letter-spacing: 0.32px;
+    margin-bottom: 16px;
+}
+
+.card-rate {
+    display: flex;
+    align-items: center;
+position: absolute;
+    gap: 4px;
+    border-radius: 8px;
+    background: var(--Black-65);
+    backdrop-filter: blur(4px);
+    padding: 4px 8px;
+}
+
+.card-rate > img {
+    width: 16px;
+}
+
+.card-rate > span {
+    color: var(--Warning-500);
+    line-height: normal;
+}
+
+.favorite {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    font-weight: 600;
+    letter-spacing: 0.32px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.favorite > img {
+    width: 24px;
+}
+
+.favorite-false {
+    color: var(--Primary-400);
+}
+
+.favorite-true,
+.favorite-true > img {
+    color: var(--Success-400);
+    stroke: #37D8A7FF;
+}

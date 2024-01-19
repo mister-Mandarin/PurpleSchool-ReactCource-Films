@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Black Widow",
+    "img": "Black-Widow.jpg",
+    "rating": 324
+  },
+  {
+    "title": "Shang Chi",
+    "img": "./img/Shang-Chi.jpg",
+    "rating": 124
+  },
+  {
+    "title": "Loki",
+    "img": "./img/Loki.jpg",
+    "rating": 235
+  },
+  {
+    "title": "How I Met Your Mother",
+    "img": "./img/How-I-Met-Your-Mother.jpg",
+    "rating": 123
+  },
+  {
+    "title": "Money Heist",
+    "img": "./img/Money-Heist.jpg",
+    "rating": 8125
+  }
+]
