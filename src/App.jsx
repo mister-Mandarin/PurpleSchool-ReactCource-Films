@@ -6,6 +6,7 @@ import Input from './Input/Input.jsx';
 import Layout from './Layout/Layout.jsx';
 import CardsField from './CardsField/CardsField.jsx';
 import CardFilm from './CardFilm/CardFilm.jsx';
+import Data from './CardsField/data/data.json';
 
 export default function App() {
 
@@ -21,12 +22,15 @@ export default function App() {
 			<HeadTitle Tag={'h3'} className={'small'} text={'Avengers: Endgame'} />
 			<HeaderDescription className={'description-card'} text={'After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts...'} />
 			<CardsField>
-				<CardFilm
-					name='asdf'
-					isFavorite={false}
-					rate='1233'
-					img='../src/CardsField/data/img/Black-Widow.jpg'
-				/>
+				{ Data.map(el => (
+					<CardFilm
+						key={el.id}
+						title={el.title}
+						rate={el.rate}
+						img={el.img}
+					>
+					</CardFilm>
+				))}
 			</CardsField>
 		</>
 	);

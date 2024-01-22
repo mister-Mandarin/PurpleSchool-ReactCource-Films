@@ -1,6 +1,16 @@
 import './CardFilm.css';
+import {useState} from 'react';
 
-export default function CardFilm({rate, img, name, isFavorite= false}) {
+export default function CardFilm({rate, img, title}) {
+
+	const [addFavorite, setAddFavorite] = useState(false);
+
+	let cl = 'favorite ' + (addFavorite ? 'favorite-true' : 'favorite-false');
+
+	function changeFavorite() {
+		setAddFavorite(!addFavorite);
+	}
+
 	return (
 		<div className='card'>
 			<div className='card-rate'>
@@ -8,15 +18,19 @@ export default function CardFilm({rate, img, name, isFavorite= false}) {
 				<span>{rate}</span>
 			</div>
 			<img src={img} alt=""/>
-			<span>{name}</span>
-			{!isFavorite && <div className='favorite favorite-false'>
-				<img src="/like.svg" alt=""/>
-				<span>В избранное</span>
-			</div>}
-			{isFavorite && <div className='favorite favorite-true'>
-				<img src="/bookmark.svg" alt=""/>
-				<span>В избранном</span>
-			</div>}
+			<span>{title}</span>
+			<div className={cl} onClick={changeFavorite}>
+				{!addFavorite &&
+				<>
+					<img src="/like.svg" alt=""/>
+					<span>В избранное</span>
+				</>}
+				{addFavorite &&
+					<>
+						<img src="/bookmarkGreen.svg" alt=""/>
+						<span>В избранном</span>
+					</>}
+			</div>
 		</div>
 	);
 }

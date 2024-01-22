@@ -1,5 +1,5 @@
 .card {
-    max-width: 282px;
+    width: 282px;
     padding: 8px 8px 16px 8px;
 
     display: flex;
@@ -26,12 +26,14 @@
 .card-rate {
     display: flex;
     align-items: center;
-position: absolute;
+    position: absolute;
     gap: 4px;
     border-radius: 8px;
     background: var(--Black-65);
     backdrop-filter: blur(4px);
     padding: 4px 8px;
+    left: 16px;
+    top: 16px;
 }
 
 .card-rate > img {
@@ -47,11 +49,14 @@ position: absolute;
     display: flex;
     flex-direction: row;
     gap: 8px;
+    cursor: pointer;
 
     font-weight: 600;
     letter-spacing: 0.32px;
     justify-content: flex-start;
     align-items: center;
+    margin-bottom: 8px;
+    align-self: flex-start;
 }
 
 .favorite > img {
@@ -62,8 +67,6 @@ position: absolute;
     color: var(--Primary-400);
 }
 
-.favorite-true,
-.favorite-true > img {
+.favorite-true {
     color: var(--Success-400);
-    stroke: #37D8A7FF;
 }
