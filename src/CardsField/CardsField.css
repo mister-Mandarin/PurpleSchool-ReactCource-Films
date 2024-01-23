@@ -8,9 +8,3 @@
     max-width: 1200px;
     margin: 0 auto;
 }
-
-@media (max-width: 1210px) {
-    .cards-field {
-        padding: 0 5px;
-    }
-}

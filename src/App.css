@@ -33,3 +33,9 @@
 body {
     background: var(--Grey-900);
 }
+
+.body-container {
+    max-width: 1210px;
+    padding: 0 5px;
+    margin: 0 auto;
+}
