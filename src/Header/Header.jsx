@@ -1,7 +1,7 @@
-import './Layout.css';
+import './Header.css';
 import LayoutLink from '../LayoutLink/LayoutLink.jsx';
 
-export default function Layout() {
+export default function Header() {
 	return (
 		<header className='layout-wrapper'>
 			<div className="layout-container">
