@@ -1,4 +1,5 @@
 import './CardFilm.css';
+import CardFilmRate from './CardFilmRate/CardFilmRate.jsx';
 
 export default function CardFilm({rate, img, title, isFavorite}) {
 
@@ -6,12 +7,9 @@ export default function CardFilm({rate, img, title, isFavorite}) {
 
 	return (
 		<div className='card'>
-			<div className='card-rate'>
-				<img src="/star.svg" alt=""/>
-				<span>{rate}</span>
-			</div>
+			<CardFilmRate rate={rate}/>
 			<img src={img} alt=""/>
-			<span>{title}</span>
+			{title && <span>{title}</span>}
 			<div className={cl}>
 				{!isFavorite &&
 				<>

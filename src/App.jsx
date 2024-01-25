@@ -5,13 +5,14 @@ import TextParagraph from './TextParagraph/TextParagraph.jsx';
 import Input from './Input/Input.jsx';
 import Header from './Header/Header.jsx';
 import CardsField from './CardsField/CardsField.jsx';
+import Body from './Body/Body.jsx';
 
 export default function App() {
 
 	return (
 		<>
 			<Header />
-			<div className="body-container">
+			<Body>
 				<Input placeholder='Введите название' icon={true}/>
 
 				<Button name={'Искать'} onClick={() => console.log('Меня нажали!')}/>
@@ -21,7 +22,7 @@ export default function App() {
 				<TextTitle Tag={'h3'} className={'small'} text={'Avengers: Endgame'} />
 				<TextParagraph className={'description-card'} text={'After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts...'} />
 				<CardsField />
-			</div>
+			</Body>
 		</>
 	);
 }

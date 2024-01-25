@@ -1,0 +1,21 @@
+.card-rate {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    gap: 4px;
+    border-radius: 8px;
+    background: var(--Black-65);
+    backdrop-filter: blur(4px);
+    padding: 4px 8px;
+    left: 16px;
+    top: 16px;
+}
+
+.card-rate > img {
+    width: 16px;
+}
+
+.card-rate > span {
+    color: var(--Warning-500);
+    line-height: normal;
+}
