@@ -1,5 +1,5 @@
 import './Header.css';
-import LayoutLink from '../LayoutLink/LayoutLink.jsx';
+import HeaderLink from '../HeaderLink/HeaderLink.jsx';
 
 export default function Header() {
 	return (
@@ -7,10 +7,10 @@ export default function Header() {
 			<div className="layout-container">
 				<img className='layout-icon' src="/bookmark.svg" alt=""/>
 				<nav className='layout-links'>
-					<LayoutLink linkName='Поиск фильмов' />
-					<LayoutLink icon={2} linkName='Мои фильмы' />
-					<LayoutLink icon='user' linkName='Андрей' />
-					<LayoutLink icon='login' linkName='Войти' />
+					<HeaderLink linkName='Поиск фильмов' />
+					<HeaderLink icon={2} linkName='Мои фильмы' />
+					<HeaderLink icon='user' linkName='Андрей' />
+					<HeaderLink icon='login' linkName='Войти' />
 				</nav>
 			</div>
 		</header>

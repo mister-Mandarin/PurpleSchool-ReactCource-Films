@@ -1,6 +1,6 @@
-import './LayoutLink.css';
+import './HeaderLink.css';
 
-export default function LayoutLink({ linkName, icon }) {
+export default function HeaderLink({ linkName, icon }) {
 	let iconPath;
 	let cl = 'layout-link_container layout-container_user';
 
