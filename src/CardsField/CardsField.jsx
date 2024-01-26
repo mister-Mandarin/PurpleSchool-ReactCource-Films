@@ -6,20 +6,23 @@ import TextParagraph from '../TextParagraph/TextParagraph.jsx';
 
 export default function CardsField() {
 
+	if (!Data.length) {
+		return (
+			<TextParagraph text={'Нет данных для отображения'}/>
+		);
+	} 
+
 	return (
 		<div className='cards-field'>
-			{Data && Data.length > 0 ?
-				Data.map(el => (
-					<CardFilm
-						key={el.id}
-						title={el.title}
-						rate={el.rate}
-						img={el.img}
-						isFavorite={el.isFavorite}
-					>
-					</CardFilm>
-				)) : <TextParagraph text={'Нет данных для отображения'}/>
-			}
+			{Data.map(el => (
+				<CardFilm
+					key={el.id}
+					title={el.title}
+					rate={el.rate}
+					img={el.img}
+					isFavorite={el.isFavorite}
+				/>
+			))}
 		</div>
 	);
 }
