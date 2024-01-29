@@ -13,15 +13,19 @@ export default function CardsField() {
 
 	return (
 		<div className='cards-field'>
-			{Data.map(el => (
-				<CardFilm
-					key={el.id}
-					title={el.title}
-					rate={el.rate}
-					img={el.img}
-					isFavorite={el.isFavorite}
-				/>
-			))}
+			{Data.map(el => {
+				if (el.id && el.title && el.rate && el.img) {
+					return (
+						<CardFilm
+							key={el.id}
+							title={el.title}
+							rate={el.rate}
+							img={el.img}
+							isFavorite={el.isFavorite}
+						/>
+					);
+				}
+			})}
 		</div>
 	);
 }
