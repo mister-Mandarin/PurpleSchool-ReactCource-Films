@@ -4,6 +4,7 @@ import Button from '../Button/Button.jsx';
 import TextTitle from '../TextTitle/TextTitle.jsx';
 import TextParagraph from '../TextParagraph/TextParagraph.jsx';
 import CardsField from '../CardsField/CardsField.jsx';
+import Data from '../CardsField/data/data.json';
 
 export default function Body() {
 	return (
@@ -16,7 +17,7 @@ export default function Body() {
 
 			<TextTitle Tag={'h3'} className={'small'} text={'Avengers: Endgame'} />
 			<TextParagraph className={'description-card'} text={'After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts...'} />
-			<CardsField />
+			<CardsField Data={Data}/>
 		</div>
 	);
 }

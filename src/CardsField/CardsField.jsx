@@ -1,9 +1,8 @@
 import './CardsField.css';
-import Data from './data/data.json';
 import CardFilm from '../CardFilm/CardFilm.jsx';
 import TextParagraph from '../TextParagraph/TextParagraph.jsx';
 
-export default function CardsField() {
+export default function CardsField({Data}) {
 
 	if (!Data || !Data.length) {
 		return (
