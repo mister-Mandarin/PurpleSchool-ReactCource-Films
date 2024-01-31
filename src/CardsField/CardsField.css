@@ -1,0 +1,10 @@
+.cards-field {
+    display: grid;
+    grid-gap: 16px 24px;
+    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+    grid-auto-flow: dense;
+    justify-content: center;
+    justify-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}

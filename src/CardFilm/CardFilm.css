@@ -1,0 +1,50 @@
+.card {
+    width: 282px;
+    padding: 8px 8px 16px 8px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 12px;
+    background: var(--Black-80);
+    backdrop-filter: blur(40px);
+
+    position: relative;
+}
+
+.card > img {
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+.card > span {
+    color: var(--Grey-50);
+    letter-spacing: 0.32px;
+    margin-bottom: 16px;
+}
+
+.favorite {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    cursor: pointer;
+
+    font-weight: 600;
+    letter-spacing: 0.32px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 8px;
+    align-self: flex-start;
+}
+
+.favorite > img {
+    width: 24px;
+}
+
+.favorite-false {
+    color: var(--Primary-400);
+}
+
+.favorite-true {
+    color: var(--Success-400);
+}
