@@ -1,4 +1,4 @@
-import './CardsField.css';
+import styles from './CardsField.module.css';
 import CardFilm from '../CardFilm/CardFilm.jsx';
 import TextParagraph from '../TextParagraph/TextParagraph.jsx';
 
@@ -11,7 +11,7 @@ export default function CardsField({Data}) {
 	} 
 
 	return (
-		<div className='cards-field'>
+		<div className={styles.cardsField}>
 			{Data.map(el => {
 				if (el.id && el.title && el.rate && el.img) {
 					return (

@@ -1,4 +1,4 @@
-.input-wrapper {
+.inputWrapper {
     position: relative;
 }
 
@@ -21,7 +21,7 @@
     line-height: 16px; /* 114.286% */
 }
 
-.input-icon {
+.inputIcon {
     padding-left: 56px;
 }
 

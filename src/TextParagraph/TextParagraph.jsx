@@ -1,9 +1,13 @@
-import './TextParagraph.css';
+import styles from './TextParagraph.module.css';
+import cn from 'classnames';
 
-export default function TextParagraph({text, className}) {
+export default function TextParagraph({text, className = 'title' || 'card'}) {
 	return (
 		<>
-			<p className={`description ${className}`}>{text}</p>
+			<p className={cn(styles.description, {
+				[styles.descriptionTitle]: className === 'title',
+				[styles.descriptionCard]: className === 'card'
+			})}>{text}</p>
 		</>
 	);
 }

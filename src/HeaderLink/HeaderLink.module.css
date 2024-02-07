@@ -1,19 +1,19 @@
-.layout-link_container {
+.layoutLink_container {
     display: flex;
     gap: 8px;
     padding: 12px 16px;
 }
 
-.layout-container_user{
+.layoutContainer_user{
     padding: 12px 32px;
 }
 
-.layout-link {
+.layoutLink {
     font-weight: 600;
     letter-spacing: 0.32px;
 }
 
-.link-number {
+.linkNumber {
     width: 24px;
     height: 24px;
     background: var(--Primary-400);

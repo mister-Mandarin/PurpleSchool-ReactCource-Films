@@ -1,4 +1,4 @@
-.layout-wrapper {
+.layoutWrapper {
     width: 100%;
     height: 80px;
 
@@ -6,7 +6,7 @@
     backdrop-filter: blur(20px);
 }
 
-.layout-container {
+.layoutContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -16,11 +16,11 @@
     padding: 0 5px;
 }
 
-.layout-icon {
+.layoutIcon {
     width: 40px;
 }
 
-.layout-links {
+.layoutLinks {
     display: flex;
     flex-direction: row;
     gap: 16px;

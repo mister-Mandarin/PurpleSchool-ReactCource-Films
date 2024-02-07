@@ -4,12 +4,12 @@
     font-weight: 400;
 }
 
-.description-title {
+.descriptionTitle {
     font-size: 16px;
     line-height: 24px; /* 150% */
 }
 
-.description-card {
+.descriptionCard {
     font-size: 20px;
     line-height: 32px; /* 160% */
 }

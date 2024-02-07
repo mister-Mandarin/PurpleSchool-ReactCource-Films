@@ -41,10 +41,10 @@
     width: 24px;
 }
 
-.favorite-false {
+.favoriteFalse {
     color: var(--Primary-400);
 }
 
-.favorite-true {
+.favoriteTrue {
     color: var(--Success-400);
 }
