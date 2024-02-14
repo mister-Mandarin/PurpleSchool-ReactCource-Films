@@ -2,6 +2,7 @@
     display: flex;
     gap: 8px;
     padding: 12px 16px;
+    cursor: pointer;
 }
 
 .layoutContainer_user{
