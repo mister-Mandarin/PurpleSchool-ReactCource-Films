@@ -17,9 +17,10 @@ export function actionsLoginForm(state, action) {
 	case 'LOGOUT': {
 		return {...state, userData: USER_STATE.userData};
 	}
-	case 'WRITE_TO_LOCALSTORAGE': {
-		const updatedState = { ...state, userData: { ...state.userData, isLogin: true } };
+	case 'CHANGE_LOCALSTORAGE': {
+		const updatedState = { ...state, userData: { ...state.userData } };
 		const setUserData = JSON.stringify(updatedState.userData);
+		console.log('updatedState ', updatedState.userData);
 		localStorage.setItem('userData', setUserData);
 		return state;
 	}

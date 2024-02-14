@@ -1,9 +1,10 @@
 import styles from './FormLogin.module.css';
 import Input from '../Input/Input.jsx';
-import {useReducer, useRef} from 'react';
+import {useContext, useReducer, useRef} from 'react';
 import Button from '../Button/Button.jsx';
 import TextTitle from '../TextTitle/TextTitle.jsx';
 import {USER_STATE, actionsLoginForm} from './FormLogin.state.js';
+import {AuthContext} from '../context/AuthUser.context.jsx';
 
 export default function FormLogin() {
 
@@ -11,11 +12,13 @@ export default function FormLogin() {
 	const inputRef = useRef(null);
 
 	const {userData} = state;
+	const {updateAuth} = useContext(AuthContext);
 
 	function personLogin(e) {
 		e.preventDefault();
-		dispatch({type: 'WRITE_TO_LOCALSTORAGE'});
 		dispatch({type: 'LOGIN'});
+		dispatch({type: 'CHANGE_LOCALSTORAGE'});
+		updateAuth();
 	}
 
 	function onChange(e) {

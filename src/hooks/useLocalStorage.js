@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 const DEFAULT_STORAGE = {
 	name: '',
-	isLoading: false
+	isLogin: false
 };
 
 export const useLocalStorage = (key) => {
