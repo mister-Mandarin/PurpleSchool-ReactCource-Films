@@ -2,9 +2,9 @@ import styles from './CardsField.module.css';
 import CardFilm from '../CardFilm/CardFilm.jsx';
 import TextParagraph from '../TextParagraph/TextParagraph.jsx';
 
-export default function CardsField({Data}) {
+export default function CardsField({data}) {
 
-	if (!Data || !Data.length) {
+	if (!data) {
 		return (
 			<TextParagraph text={'Нет данных для отображения'}/>
 		);
@@ -12,15 +12,12 @@ export default function CardsField({Data}) {
 
 	return (
 		<div className={styles.cardsField}>
-			{Data.map(el => {
-				if (el.id && el.title && el.rate && el.img) {
+			{data.map(el => {
+				if (el.id) {
 					return (
 						<CardFilm
 							key={el.id}
-							title={el.title}
-							rate={el.rate}
-							img={el.img}
-							isFavorite={el.isFavorite}
+							el={el}
 						/>
 					);
 				}

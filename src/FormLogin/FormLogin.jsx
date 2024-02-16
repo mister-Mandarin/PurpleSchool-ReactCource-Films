@@ -1,24 +1,23 @@
 import styles from './FormLogin.module.css';
 import Input from '../Input/Input.jsx';
-import {useContext, useReducer, useRef} from 'react';
+import {useContext, useRef} from 'react';
 import Button from '../Button/Button.jsx';
 import TextTitle from '../TextTitle/TextTitle.jsx';
-import {USER_STATE, actionsLoginForm} from './FormLogin.state.js';
+import {useLocalStorage} from '../hooks/useLocalStorage.js';
 import {AuthContext} from '../context/AuthUser.context.jsx';
 
 export default function FormLogin() {
 
-	const [state, dispatch] = useReducer(actionsLoginForm, USER_STATE);
+	const { state, dispatch } = useContext(AuthContext);
+	const { setStorageValue } = useLocalStorage('userData');
 	const inputRef = useRef(null);
-
-	const {userData} = state;
-	const {updateAuth} = useContext(AuthContext);
 
 	function personLogin(e) {
 		e.preventDefault();
 		dispatch({type: 'LOGIN'});
-		dispatch({type: 'CHANGE_LOCALSTORAGE'});
-		updateAuth();
+		console.log(state);
+		setStorageValue({ ...state });
+		console.log(state);
 	}
 
 	function onChange(e) {
@@ -26,12 +25,12 @@ export default function FormLogin() {
 	}
 
 	return (
-		<form  className={styles.loginForn} onSubmit={personLogin}>
+		<form  className={styles.loginForm} onSubmit={personLogin}>
 			<TextTitle Tag={'h1'} text={'Вход'} className={styles.loginTitle} />
 			<Input
 				placeholder={'Ваше имя'}
 				ref={inputRef}
-				value={userData.name}
+				value={state.name}
 				onChange={onChange}
 				name='loginName'
 			/>

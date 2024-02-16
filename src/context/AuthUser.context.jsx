@@ -1,37 +1,13 @@
-import {createContext, useEffect, useState} from 'react';
-import {useLocalStorage} from '../hooks/useLocalStorage.js';
+import {createContext, useReducer, useState} from 'react';
+import { actionsLoginForm, USER_STATE_DEFAULT } from '/src/FormLogin/FormLogin.state.js';
 
-export const AuthContext = createContext({
-	// начальное значение
-	name: null,
-	isLogin: false
-});
+export const AuthContext = createContext(USER_STATE_DEFAULT);
 
 export default function AuthUserContext({children}) {
-	const {value} = useLocalStorage('userData');
-	const [auth, setAuth] = useState({
-		name: value.name,
-		isLogin: value.isLogin
-	});
+	const [state, dispatch] = useReducer(actionsLoginForm, USER_STATE_DEFAULT);
+	const [auth, setAuth] = useState({});
 
-	useEffect(() => {
-		updateAuth();
-		console.log('вызов контекста');
-	},[]);
-
-	function updateAuth() {
-		const newValue = value || {
-			name: null,
-			isLogin: false
-		};
-
-		setAuth({
-			name: newValue.name,
-			isLogin: newValue.isLogin
-		});
-	}
-
-	return <AuthContext.Provider value={{auth, setAuth,updateAuth}}>
+	return <AuthContext.Provider value={{state, dispatch, auth, setAuth}}>
 		{children}
 	</AuthContext.Provider>;
 }

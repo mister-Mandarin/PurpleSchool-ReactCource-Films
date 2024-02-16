@@ -1,31 +1,18 @@
 import styles from './CardFilm.module.css';
 import CardFilmRate from './CardFilmRate/CardFilmRate.jsx';
-import cn from 'classnames';
+import CardFilmFavorites from './CardFilmFavorites/CardFilmFavorites.jsx';
 
 
-export default function CardFilm({rate, img, title, isFavorite}) {
+export default function CardFilm({el}) {
+
+	const {rate, img, title, isFavorite} = el;
 
 	return (
 		<div className={styles.card}>
-			<CardFilmRate rate={rate}/>
+			{rate && <CardFilmRate rate={rate}/>}
 			<img src={img} alt=""/>
-			{title && <span>{title}</span>}
-			<div className={cn(styles.favorite, {
-				[styles.favoriteTrue]: isFavorite,
-				[styles.favoriteFalse]: !isFavorite
-			}
-			)}>
-				{!isFavorite &&
-				<>
-					<img src="/like.svg" alt=""/>
-					<span>В избранное</span>
-				</>}
-				{isFavorite &&
-					<>
-						<img src="/bookmarkGreen.svg" alt=""/>
-						<span>В избранном</span>
-					</>}
-			</div>
+			{title && <span>{title || ''}</span>}
+			<CardFilmFavorites isFavorite={isFavorite}/>
 		</div>
 	);
 }

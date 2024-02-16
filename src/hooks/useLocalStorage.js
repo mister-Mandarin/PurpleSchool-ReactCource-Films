@@ -1,32 +1,27 @@
 import { useState, useEffect } from 'react';
-
-const DEFAULT_STORAGE = {
-	name: '',
-	isLogin: false
-};
+import {USER_STATE_DEFAULT} from '/src/FormLogin/FormLogin.state.js';
 
 export const useLocalStorage = (key) => {
 	const [value, setValue] = useState(() => {
 		return getStorageValue(key);
 	});
 
-	// читаем по ключу
+	// читаем по ключу при рендере
 	useEffect(() => {
-		const storedData = JSON.parse(localStorage.getItem(key));
-
-		if (Array.isArray(storedData)) {
-			setValue(storedData);
-		}
+		setValue(getStorageValue(key));
 	}, [key]);
 
-	return { value, setValue };
+	function getStorageValue(key) {
+		const saved = JSON.parse(localStorage.getItem(key));
+		return saved !== null ? saved : USER_STATE_DEFAULT;
+	}
+
+	function setStorageValue(state) {
+		const setUserData = JSON.stringify(state);
+		console.log('setUserData ', setUserData);
+		localStorage.setItem(key, setUserData);
+		return state;
+	}
+
+	return { value, setValue, setStorageValue};
 };
-
-function getStorageValue(key) {
-
-	const saved = localStorage.getItem(key);
-	return saved !== null ? JSON.parse(saved) : DEFAULT_STORAGE;
-}
-
-
-
