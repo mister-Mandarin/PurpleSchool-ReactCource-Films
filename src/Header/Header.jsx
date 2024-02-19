@@ -1,6 +1,6 @@
 import styles from './Header.module.css';
 import HeaderLink from '../HeaderLink/HeaderLink.jsx';
-import HeaderAuth from './HeaderAuth/HeaderAuth.jsx';
+import Auth from '../Auth/Auth.jsx';
 
 export default function Header() {
 
@@ -11,7 +11,7 @@ export default function Header() {
 				<nav className={styles.layoutLinks}>
 					<HeaderLink linkName='Поиск фильмов' />
 					<HeaderLink icon={2} linkName='Мои фильмы' />
-					<HeaderAuth />
+					<Auth />
 				</nav>
 			</div>
 		</header>

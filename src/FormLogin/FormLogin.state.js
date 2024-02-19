@@ -1,5 +1,5 @@
 export const USER_STATE_DEFAULT = {
-	name: '',
+	name:'',
 	isLogin: false
 };
 
@@ -9,11 +9,15 @@ export function actionsLoginForm(state, action) {
 	case 'UPDATE_NAME':
 		return {...state, name: action.data};
 	case 'LOGIN': {
-		console.log(state);
-		return {...state, isLogin: true};
+		let newState = {...state, isLogin: true};
+		localStorage.setItem(action.key, JSON.stringify(newState));
+		return newState;
 	}
-	case 'LOGOUT':
-		return {...state, USER_STATE_DEFAULT};
+	case 'LOGOUT': {
+		let newState = {...state, ...USER_STATE_DEFAULT};
+		localStorage.setItem(action.key, JSON.stringify(newState));
+		return newState;
+	}
 	default:
 		return state;
 	}

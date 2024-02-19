@@ -7,17 +7,13 @@ import {useLocalStorage} from '../hooks/useLocalStorage.js';
 import {AuthContext} from '../context/AuthUser.context.jsx';
 
 export default function FormLogin() {
-
-	const { state, dispatch } = useContext(AuthContext);
-	const { setStorageValue } = useLocalStorage('userData');
+	const {valueLocalstor} = useLocalStorage('userData');
+	const {state, dispatch } = useContext(AuthContext);
 	const inputRef = useRef(null);
 
 	function personLogin(e) {
 		e.preventDefault();
-		dispatch({type: 'LOGIN'});
-		console.log(state);
-		setStorageValue({ ...state });
-		console.log(state);
+		dispatch({type: 'LOGIN', key: 'userData'});
 	}
 
 	function onChange(e) {
