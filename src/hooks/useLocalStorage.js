@@ -16,7 +16,7 @@ export const useLocalStorage = (key) => {
 
 	function getStorageValue(key) {
 		const saved = JSON.parse(localStorage.getItem(key));
-		if (saved == null || saved === undefined) {
+		if (saved === null) {
 			return setStorageValue(USER_STATE_DEFAULT);
 		}
 
@@ -29,5 +29,5 @@ export const useLocalStorage = (key) => {
 		return state;
 	}
 
-	return { valueLocalstor, setValueLocalstor, getStorageValue};
+	return { valueLocalstor, setValueLocalstor};
 };

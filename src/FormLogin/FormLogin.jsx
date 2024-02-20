@@ -3,11 +3,10 @@ import Input from '../Input/Input.jsx';
 import {useContext, useRef} from 'react';
 import Button from '../Button/Button.jsx';
 import TextTitle from '../TextTitle/TextTitle.jsx';
-import {useLocalStorage} from '../hooks/useLocalStorage.js';
 import {AuthContext} from '../context/AuthUser.context.jsx';
 
 export default function FormLogin() {
-	const {valueLocalstor} = useLocalStorage('userData');
+	//const {valueLocalstor} = useLocalStorage('userData');
 	const {state, dispatch } = useContext(AuthContext);
 	const inputRef = useRef(null);
 

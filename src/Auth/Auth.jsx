@@ -1,11 +1,9 @@
 import HeaderLink from '../HeaderLink/HeaderLink.jsx';
 import {useContext} from 'react';
 import {AuthContext} from '/src/context/AuthUser.context.jsx';
-import {useLocalStorage} from '../hooks/useLocalStorage.js';
 
 export default function Auth() {
-	const {valueLocalstor, setValueLocalstor} = useLocalStorage('userData');
-	const {state, dispatch } = useContext(AuthContext);
+	const {dispatch, valueLocalstor} = useContext(AuthContext);
 
 	function logOut() {
 		dispatch({type: 'LOGOUT', key: 'userData'});
