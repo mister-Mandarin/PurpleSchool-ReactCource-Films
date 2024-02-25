@@ -6,7 +6,6 @@ import TextTitle from '../TextTitle/TextTitle.jsx';
 import {AuthContext} from '../context/AuthUser.context.jsx';
 
 export default function FormLogin() {
-	//const {valueLocalstor} = useLocalStorage('userData');
 	const {state, dispatch } = useContext(AuthContext);
 	const inputRef = useRef(null);
 
@@ -29,7 +28,7 @@ export default function FormLogin() {
 				onChange={onChange}
 				name='loginName'
 			/>
-			<Button name={'Войти в профиль'} />
+			<Button>Войти в профиль</Button>
 		</form>
 	);
 }

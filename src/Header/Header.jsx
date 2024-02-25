@@ -9,8 +9,8 @@ export default function Header() {
 			<div className={styles.layoutContainer}>
 				<img className={styles.layoutIcon} src="/bookmark.svg" alt=""/>
 				<nav className={styles.layoutLinks}>
-					<HeaderLink linkName='Поиск фильмов' />
-					<HeaderLink icon={2} linkName='Мои фильмы' />
+					<HeaderLink>Поиск фильмов</HeaderLink>
+					<HeaderLink icon={2}>Мои фильмы</HeaderLink>
 					<Auth />
 				</nav>
 			</div>

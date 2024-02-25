@@ -3,7 +3,7 @@ import {USER_STATE_DEFAULT} from '/src/FormLogin/FormLogin.state.js';
 
 export const useLocalStorage = (key) => {
 
-	const [valueLocalstor, setValueLocalstor] = useState(
+	const [authState, setAuthState] = useState(
 		// устанавливаем начальное состояние с помощью функции
 		() => {
 			return getStorageValue(key);
@@ -11,7 +11,7 @@ export const useLocalStorage = (key) => {
 
 	// читаем по ключу при рендере
 	useEffect(() => {
-		setValueLocalstor(getStorageValue(key));
+		setAuthState(getStorageValue(key));
 	}, [key]);
 
 	function getStorageValue(key) {
@@ -29,5 +29,5 @@ export const useLocalStorage = (key) => {
 		return state;
 	}
 
-	return { valueLocalstor, setValueLocalstor};
+	return {authState, setAuthState};
 };

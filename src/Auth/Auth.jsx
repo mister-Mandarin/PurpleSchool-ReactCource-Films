@@ -3,28 +3,29 @@ import {useContext} from 'react';
 import {AuthContext} from '/src/context/AuthUser.context.jsx';
 
 export default function Auth() {
-	const {dispatch, valueLocalstor} = useContext(AuthContext);
+	const {dispatch, authState} = useContext(AuthContext);
 
 	function logOut() {
 		dispatch({type: 'LOGOUT', key: 'userData'});
 	}
 
+	function logIn() {
+		console.log('Нажат вход');
+	}
+
 	return (
 		<>
-			{valueLocalstor.isLogin &&
-				<HeaderLink
-					icon="user"
-					linkName={valueLocalstor.name}
-				/>}
-			{valueLocalstor.isLogin ?
-				<HeaderLink
-					onClick={logOut}
-					linkName='Выйти'
-				/> :
-				<HeaderLink
-					icon='login'
-					linkName='Войти'
-				/>
+			{authState.isLogin &&
+				<HeaderLink icon="user">
+					{authState.name}
+				</HeaderLink>}
+			{authState.isLogin ?
+				<HeaderLink onClick={logOut}>
+					Выйти
+				</HeaderLink> :
+				<HeaderLink onClick={logIn} icon='login'>
+					Войти
+				</HeaderLink>
 			}
 		</>);
 }

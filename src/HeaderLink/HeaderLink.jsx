@@ -1,7 +1,7 @@
 import styles from './HeaderLink.module.css';
 import cn from 'classnames';
 
-export default function HeaderLink({ linkName, icon, ...props}) {
+export default function HeaderLink({ children, icon, ...props}) {
 	let iconPath;
 
 	if (typeof icon === 'string') {
@@ -21,7 +21,7 @@ export default function HeaderLink({ linkName, icon, ...props}) {
 			className={cn(styles.layoutLink_container, {
 				[styles.layoutContainer_user]: typeof icon === 'string'
 			})}>
-			<span className={styles.layoutLink}>{linkName}</span>
+			<span className={styles.layoutLink}>{children}</span>
 			{typeof icon === 'number' &&
 				<span className={styles.linkNumber}>{icon}</span>
 			}

@@ -5,10 +5,8 @@ import TextParagraph from '../TextParagraph/TextParagraph.jsx';
 export default function CardsField({data}) {
 
 	if (!data) {
-		return (
-			<TextParagraph text={'Нет данных для отображения'}/>
-		);
-	} 
+		return <TextParagraph>Нет данных для отображения</TextParagraph>;
+	}
 
 	return (
 		<div className={styles.cardsField}>
