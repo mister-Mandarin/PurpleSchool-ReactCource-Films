@@ -5,25 +5,27 @@ import {AuthContext} from '/src/context/AuthUser.context.jsx';
 export default function Auth() {
 	const {dispatch, authState} = useContext(AuthContext);
 
-	function logOut() {
-		dispatch({type: 'LOGOUT', key: 'userData'});
-	}
-
-	function logIn() {
-		console.log('Нажат вход');
+	function handleAuth() { 
+		if (authState.isLogin) {
+			dispatch({ type: 'LOGOUT', key: 'userData' });
+		} else {
+			console.log('Нажат вход');
+		}
 	}
 
 	return (
 		<>
-			{authState.isLogin &&
-				<HeaderLink icon="user">
-					{authState.name}
-				</HeaderLink>}
 			{authState.isLogin ?
-				<HeaderLink onClick={logOut}>
+				(<>
+					<HeaderLink icon="user">
+						{authState.name}
+					</HeaderLink>
+					<HeaderLink onClick={handleAuth}>
 					Выйти
-				</HeaderLink> :
-				<HeaderLink onClick={logIn} icon='login'>
+					</HeaderLink>
+				</>
+				) :
+				<HeaderLink onClick={handleAuth} icon='login'>
 					Войти
 				</HeaderLink>
 			}

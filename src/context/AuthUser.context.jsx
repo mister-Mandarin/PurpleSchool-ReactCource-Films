@@ -9,9 +9,7 @@ export default function AuthUserContext({children}) {
 	const {authState, setAuthState} = useLocalStorage('userData');
 	const prevIsLoginRef = useRef(state.isLogin);
 
-	// идея от chatGPT, сам бы я до конца месяца думал как сохранить предыдущее состояние
 	useEffect(() => {
-		// Обновляем localStorage только если состояние isLogin изменилось
 		if (state.isLogin !== prevIsLoginRef.current) {
 			setAuthState(state);
 			prevIsLoginRef.current = state.isLogin;
