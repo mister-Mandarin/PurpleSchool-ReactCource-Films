@@ -1,21 +1,24 @@
-import './Input.css';
-import {useState} from 'react';
+import styles from './Input.module.css';
+import {forwardRef} from 'react';
+import cn from 'classnames';
 
-export default function Input({placeholder, icon=false}) {
+const Input = forwardRef(
+	function Input({className, placeholder, icon= false, ...props}, ref) {
 
-	const inputIcon = icon ? 'input input-icon' : 'input';
+		return (
+			<div className={styles.inputWrapper}>
+				{icon ? <img className={styles.icon} src="/search.svg" alt=""/> : ''}
+				<input
+					{...props}
+					className={cn(className, styles.input, {
+						[styles.inputIcon]: icon
+					})}
+					type='text'
+					placeholder={placeholder}
+					ref={ref}
+				/>
+			</div>
+		);
+	});
 
-	const [value, setValue] = useState('');
-
-	const handleChange = (event) => {
-		setValue(event.target.value);
-		console.log(value);
-	};
-
-	return (
-		<div className='input-wrapper'>
-			{icon ? <img className='icon' src="/search.svg" alt=""/> : ''}
-			<input className={inputIcon} value={value} onChange={handleChange} type='text' placeholder={placeholder} />
-		</div>
-	);
-}
+export default Input;

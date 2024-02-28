@@ -1,0 +1,25 @@
+.favorite {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    cursor: pointer;
+
+    font-weight: 600;
+    letter-spacing: 0.32px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 8px;
+    align-self: flex-start;
+}
+
+.favorite > img {
+    width: 24px;
+}
+
+.favoriteFalse {
+    color: var(--Primary-400);
+}
+
+.favoriteTrue {
+    color: var(--Success-400);
+}

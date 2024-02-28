@@ -1,10 +1,10 @@
-import './HeaderLink.css';
+import styles from './HeaderLink.module.css';
+import cn from 'classnames';
 
-export default function HeaderLink({ linkName, icon }) {
+export default function HeaderLink({ children, icon, ...props}) {
 	let iconPath;
-	let cl = 'layout-link_container layout-container_user';
 
-	if (icon) {
+	if (typeof icon === 'string') {
 		switch (icon) {
 		case 'login':
 			iconPath = '/login.svg';
@@ -12,16 +12,21 @@ export default function HeaderLink({ linkName, icon }) {
 		case 'user':
 			iconPath = '/user.svg';
 			break;
-		default:
-			iconPath = '';
-			cl = 'layout-link_container';
 		}
 	}
 
 	return (
-		<div className={cl}>
-			<span className='layout-link'>{linkName}</span>
-			{typeof icon === 'number' ? <span className='link-number'>{icon}</span> : <img src={iconPath} alt="" />}
+		<div
+			{...props}
+			className={cn(styles.layoutLink_container, {
+				[styles.layoutContainer_user]: typeof icon === 'string'
+			})}>
+			<span className={styles.layoutLink}>{children}</span>
+			{typeof icon === 'number' &&
+				<span className={styles.linkNumber}>{icon}</span>
+			}
+			{typeof icon === 'string' && <img src={iconPath} alt=""/>
+			}
 		</div>
 	);
 }

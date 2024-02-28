@@ -1,27 +1,21 @@
-import './CardsField.css';
-import Data from './data/data.json';
+import styles from './CardsField.module.css';
 import CardFilm from '../CardFilm/CardFilm.jsx';
 import TextParagraph from '../TextParagraph/TextParagraph.jsx';
 
-export default function CardsField() {
+export default function CardsField({data}) {
 
-	if (!Data || !Data.length) {
-		return (
-			<TextParagraph text={'Нет данных для отображения'}/>
-		);
-	} 
+	if (!data) {
+		return <TextParagraph>Нет данных для отображения</TextParagraph>;
+	}
 
 	return (
-		<div className='cards-field'>
-			{Data.map(el => {
-				if (el.id && el.title && el.rate && el.img) {
+		<div className={styles.cardsField}>
+			{data.map(el => {
+				if (el.id) {
 					return (
 						<CardFilm
 							key={el.id}
-							title={el.title}
-							rate={el.rate}
-							img={el.img}
-							isFavorite={el.isFavorite}
+							el={el}
 						/>
 					);
 				}

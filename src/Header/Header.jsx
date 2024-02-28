@@ -1,16 +1,17 @@
-import './Header.css';
+import styles from './Header.module.css';
 import HeaderLink from '../HeaderLink/HeaderLink.jsx';
+import Auth from '../Auth/Auth.jsx';
 
 export default function Header() {
+
 	return (
-		<header className='layout-wrapper'>
-			<div className="layout-container">
-				<img className='layout-icon' src="/bookmark.svg" alt=""/>
-				<nav className='layout-links'>
-					<HeaderLink linkName='Поиск фильмов' />
-					<HeaderLink icon={2} linkName='Мои фильмы' />
-					<HeaderLink icon='user' linkName='Андрей' />
-					<HeaderLink icon='login' linkName='Войти' />
+		<header className={styles.layoutWrapper}>
+			<div className={styles.layoutContainer}>
+				<img className={styles.layoutIcon} src="/bookmark.svg" alt=""/>
+				<nav className={styles.layoutLinks}>
+					<HeaderLink>Поиск фильмов</HeaderLink>
+					<HeaderLink icon={2}>Мои фильмы</HeaderLink>
+					<Auth />
 				</nav>
 			</div>
 		</header>

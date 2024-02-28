@@ -1,0 +1,11 @@
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    row-gap: 27px;
+    align-items: flex-start;
+    margin: 0 0 40px 0;
+}
+
+.loginTitle {
+    margin: 80px 0 0 0;
+}

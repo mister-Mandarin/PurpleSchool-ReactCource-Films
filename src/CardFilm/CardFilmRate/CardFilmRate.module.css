@@ -1,4 +1,4 @@
-.card-rate {
+.cardRate {
     display: flex;
     align-items: center;
     position: absolute;
@@ -11,11 +11,11 @@
     top: 16px;
 }
 
-.card-rate > img {
+.cardRate > img {
     width: 16px;
 }
 
-.card-rate > span {
+.cardRate > span {
     color: var(--Warning-500);
     line-height: normal;
 }
