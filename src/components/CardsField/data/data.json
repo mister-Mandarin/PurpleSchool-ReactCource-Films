@@ -2,35 +2,35 @@
   {
     "id": 1,
     "title": "Black Widow",
-    "img": "../src/CardsField/data/img/Black-Widow.jpg",
+    "img": "../src/components/CardsField/data/img/Black-Widow.jpg",
     "rate": 324,
     "isFavorite": false
   },
   {
     "id": 2,
     "title": "Shang Chi",
-    "img": "../src/CardsField/data/img/Shang-Chi.jpg",
+    "img": "../src/components/CardsField/data/img/Shang-Chi.jpg",
     "rate": 124,
     "isFavorite": true
   },
   {
     "id": 3,
     "title": "Loki",
-    "img": "../src/CardsField/data/img/Loki.jpg",
+    "img": "../src/components/CardsField/data/img/Loki.jpg",
     "rate": 235,
     "isFavorite": false
   },
   {
     "id": 4,
     "title": "How I Met Your Mother",
-    "img": "../src/CardsField/data/img/How-I-Met-Your-Mother.jpg",
+    "img": "../src/components/CardsField/data/img/How-I-Met-Your-Mother.jpg",
     "rate": 123,
     "isFavorite": true
   },
   {
     "id": 5,
     "title": "Money Heist",
-    "img": "../src/CardsField/data/img/Money-Heist.jpg",
+    "img": "../src/components/CardsField/data/img/Money-Heist.jpg",
     "rate": 8125,
     "isFavorite": false
   }

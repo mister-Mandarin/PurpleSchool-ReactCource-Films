@@ -1,8 +1,8 @@
 import styles from './FormLogin.module.css';
-import Input from '../Input/Input.jsx';
+import Input from '../components/Input/Input.jsx';
 import {useContext, useRef} from 'react';
-import Button from '../Button/Button.jsx';
-import TextTitle from '../TextTitle/TextTitle.jsx';
+import Button from '../components/Button/Button.jsx';
+import TextTitle from '../components/TextTitle/TextTitle.tsx';
 import {AuthContext} from '../context/AuthUser.context.jsx';
 
 export default function FormLogin() {

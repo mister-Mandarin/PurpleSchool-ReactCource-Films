@@ -1,5 +1,5 @@
 import './App.css';
-import Header from './Header/Header.jsx';
+import Header from './components/Header/Header.jsx';
 import Body from './Body/Body.jsx';
 import AuthUserContext from './context/AuthUser.context.jsx';
 
