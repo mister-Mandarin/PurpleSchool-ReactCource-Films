@@ -13,21 +13,21 @@ export default function Auth() {
 		}
 	}
 
+	if (!authState.isLogin) {
+		return (
+			<HeaderLink onClick={handleAuth} icon='login'>
+				Войти
+			</HeaderLink>
+		);
+	}
+
 	return (
 		<>
-			{authState.isLogin ?
-				(<>
-					<HeaderLink icon="user">
-						{authState.name}
-					</HeaderLink>
-					<HeaderLink onClick={handleAuth}>
+			<HeaderLink icon="user">
+				{authState.name}
+			</HeaderLink>
+			<HeaderLink onClick={handleAuth}>
 					Выйти
-					</HeaderLink>
-				</>
-				) :
-				<HeaderLink onClick={handleAuth} icon='login'>
-					Войти
-				</HeaderLink>
-			}
-		</>);
+			</HeaderLink>
+		</>); 
 }
