@@ -1,9 +1,9 @@
 import styles from './FormLogin.module.css';
-import Input from '../components/Input/Input.jsx';
+import Input from '../components/Input/Input.tsx';
 import {useContext, useRef} from 'react';
 import Button from '../components/Button/Button.jsx';
 import TextTitle from '../components/TextTitle/TextTitle.tsx';
-import {AuthContext} from '../context/AuthUser.context.jsx';
+import {AuthContext} from '../context/AuthUser.context.tsx';
 
 export default function FormLogin() {
 	const {state, dispatch } = useContext(AuthContext);
@@ -20,13 +20,15 @@ export default function FormLogin() {
 
 	return (
 		<form  className={styles.loginForm} onSubmit={personLogin}>
-			<TextTitle Tag={'h1'} text={'Вход'} className={styles.loginTitle} />
+			<TextTitle Tag='h1' className={styles.loginTitle}>
+				Вход
+			</TextTitle>
 			<Input
-				placeholder={'Ваше имя'}
+				placeholder='Ваше имя'
+				name='loginName'
 				ref={inputRef}
 				value={state.name}
 				onChange={onChange}
-				name='loginName'
 			/>
 			<Button>Войти в профиль</Button>
 		</form>

@@ -1,6 +1,6 @@
 import styles from './CardsField.module.css';
 import CardFilm from '../CardFilm/CardFilm.jsx';
-import TextParagraph from '../TextParagraph/TextParagraph.jsx';
+import TextParagraph from '../TextParagraph/TextParagraph.tsx';
 
 export default function CardsField({data}) {
 

@@ -1,7 +1,7 @@
 import './App.css';
-import Header from './components/Header/Header.jsx';
+import Header from './components/Header/Header.tsx';
 import Body from './Body/Body.jsx';
-import AuthUserContext from './context/AuthUser.context.jsx';
+import AuthUserContext from './context/AuthUser.context.tsx';
 
 export default function App() {
 
