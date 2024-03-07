@@ -1,11 +1,14 @@
 import styles from './CardsField.module.css';
-import CardFilm from '../CardFilm/CardFilm.jsx';
+import CardFilm from '../CardFilm/CardFilm.tsx';
 import TextParagraph from '../TextParagraph/TextParagraph.tsx';
+import {CardsFieldProps} from './CardsField.props.ts';
 
-export default function CardsField({data}) {
+export default function CardsField({data}: CardsFieldProps) {
 
 	if (!data) {
-		return <TextParagraph>Нет данных для отображения</TextParagraph>;
+		return <TextParagraph styleParagraph='title'>
+			Нет данных для отображения
+		</TextParagraph>;
 	}
 
 	return (

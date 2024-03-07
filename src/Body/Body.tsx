@@ -1,9 +1,9 @@
 import styles from './Body.module.css';
 import TextTitle from '../components/TextTitle/TextTitle.tsx';
 import TextParagraph from '../components/TextParagraph/TextParagraph.tsx';
-import CardsField from '../components/CardsField/CardsField.jsx';
+import CardsField from '../components/CardsField/CardsField.tsx';
 import data from '../components/CardsField/data/data.json';
-import FormLogin from '../FormLogin/FormLogin.jsx';
+import FormLogin from '../FormLogin/FormLogin.tsx';
 
 export default function Body() {
 	return (

@@ -1,6 +1,10 @@
 import styles from './CardFilmRate.module.css';
 
-export default function CardFilmRate({rate}) {
+interface CardFilmRateProps {
+	rate: number;
+}
+
+export default function CardFilmRate({rate}: CardFilmRateProps) {
 	return (
 		<div className={styles.cardRate}>
 			<img src="/star.svg" alt=""/>

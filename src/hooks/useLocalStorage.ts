@@ -1,9 +1,18 @@
 import { useState, useEffect } from 'react';
-import {USER_STATE_DEFAULT} from '/src/FormLogin/FormLogin.state.js';
+import {USER_STATE_DEFAULT} from '../FormLogin/FormLogin.state.ts';
 
-export const useLocalStorage = (key) => {
+interface LocalStorageProps {
+	key: string;
+}
 
-	const [authState, setAuthState] = useState(
+interface AuthStateProps {
+	isLogin: boolean;
+	name: string;
+}
+
+export const useLocalStorage = ({key}: LocalStorageProps) => {
+
+	const [authState, setAuthState] = useState<AuthStateProps>(
 		// устанавливаем начальное состояние с помощью функции
 		() => {
 			return getStorageValue(key);
@@ -14,8 +23,8 @@ export const useLocalStorage = (key) => {
 		setAuthState(getStorageValue(key));
 	}, [key]);
 
-	function getStorageValue(key) {
-		const saved = JSON.parse(localStorage.getItem(key));
+	function getStorageValue(storageKey: string) {
+		const saved = JSON.parse(localStorage.getItem(storageKey) || '');
 		if (saved === null) {
 			return setStorageValue(USER_STATE_DEFAULT);
 		}
@@ -23,7 +32,7 @@ export const useLocalStorage = (key) => {
 		return saved;
 	}
 
-	function setStorageValue(state) {
+	function setStorageValue(state: AuthStateProps) {
 		const setUserData = JSON.stringify(state);
 		localStorage.setItem(key, setUserData);
 		return state;

@@ -1,6 +1,6 @@
 import HeaderLink from '../HeaderLink/HeaderLink.tsx';
 import {useContext} from 'react';
-import {AuthContext} from '/src/context/AuthUser.context.tsx';
+import {AuthContext} from '../../context/AuthUser.context.tsx';
 
 export default function Auth() {
 	const {dispatch, authState} = useContext(AuthContext);

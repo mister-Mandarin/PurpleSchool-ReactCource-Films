@@ -1,11 +1,11 @@
 import {HTMLAttributes, ReactNode} from 'react';
 
-enum TextParagraphType {
-    Title = 'title',
-    Card = 'card'
-}
+// enum TextParagraphType {
+//     Title = 'title',
+//     Card = 'card'
+// }
 
 export interface TextParagraphProps extends HTMLAttributes<HTMLParagraphElement> {
-    styleParagraph: TextParagraphType;
+    styleParagraph: 'title' | 'card';
     children: ReactNode;
 }

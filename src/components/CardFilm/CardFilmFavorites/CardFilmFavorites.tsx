@@ -1,7 +1,11 @@
 import cn from 'classnames';
 import styles from './CardFilmFavorites.module.css';
 
-export default function CardFilmFavorites({isFavorite}) {
+interface CardFilmFavoritesProps {
+	isFavorite: boolean;
+}
+
+export default function CardFilmFavorites({isFavorite}: CardFilmFavoritesProps) {
 	return (
 		<div className={cn(styles.favorite, {
 			[styles.favoriteTrue]: isFavorite,

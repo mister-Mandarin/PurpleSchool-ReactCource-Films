@@ -1,9 +1,17 @@
 import styles from './CardFilm.module.css';
-import CardFilmRate from './CardFilmRate/CardFilmRate.jsx';
-import CardFilmFavorites from './CardFilmFavorites/CardFilmFavorites.jsx';
+import CardFilmRate from './CardFilmRate/CardFilmRate.tsx';
+import CardFilmFavorites from './CardFilmFavorites/CardFilmFavorites.tsx';
 
+interface CardFilmProps {
+	el: {
+		rate?: number;
+		img: string;
+		title?: string;
+		isFavorite: boolean;
+	};
+}
 
-export default function CardFilm({el}) {
+export default function CardFilm({el}: CardFilmProps) {
 
 	const {rate, img, title, isFavorite} = el;
 

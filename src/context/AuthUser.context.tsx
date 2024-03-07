@@ -1,12 +1,18 @@
 import {createContext, useEffect, useRef, useReducer} from 'react';
-import { actionsLoginForm, USER_STATE_DEFAULT } from '/src/FormLogin/FormLogin.state.js';
-import {useLocalStorage} from '../hooks/useLocalStorage.js';
+import { actionsLoginForm, USER_STATE_DEFAULT } from '../FormLogin/FormLogin.state.ts';
+import {useLocalStorage} from '../hooks/useLocalStorage.ts';
+import {AuthUserProps} from './AuthUser.props.ts';
+import {StateProps} from '../FormLogin/FormLogin.props.ts';
 
 export const AuthContext = createContext(USER_STATE_DEFAULT);
 
-export default function AuthUserContext({children}) {
-	const [state, dispatch] = useReducer(actionsLoginForm, USER_STATE_DEFAULT);
-	const {authState, setAuthState} = useLocalStorage('userData');
+export default function AuthUserContext({children}: AuthUserProps) {
+
+	const [state, dispatch] = useReducer(
+		actionsLoginForm,
+		USER_STATE_DEFAULT
+	);
+	const {authState, setAuthState} = useLocalStorage({key: 'userData'});
 	const prevIsLoginRef = useRef(state.isLogin);
 
 	useEffect(() => {

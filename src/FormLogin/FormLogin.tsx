@@ -1,7 +1,7 @@
 import styles from './FormLogin.module.css';
 import Input from '../components/Input/Input.tsx';
-import {useContext, useRef} from 'react';
-import Button from '../components/Button/Button.jsx';
+import {ChangeEvent, FormEvent, useContext, useRef} from 'react';
+import Button from '../components/Button/Button.tsx';
 import TextTitle from '../components/TextTitle/TextTitle.tsx';
 import {AuthContext} from '../context/AuthUser.context.tsx';
 
@@ -9,12 +9,12 @@ export default function FormLogin() {
 	const {state, dispatch } = useContext(AuthContext);
 	const inputRef = useRef(null);
 
-	function personLogin(e) {
+	function personLogin(e: FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		dispatch({type: 'LOGIN', key: 'userData'});
 	}
 
-	function onChange(e) {
+	function onChange(e: ChangeEvent<HTMLInputElement>) {
 		dispatch({type: 'UPDATE_NAME', data: e.target.value});
 	}
 

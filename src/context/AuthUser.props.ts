@@ -1,1 +1,5 @@
-export interface AuthUserProps extends
+import {ReactNode} from 'react';
+
+export interface AuthUserProps {
+    children: ReactNode;
+}
