@@ -1,15 +1,12 @@
-enum ActionTypes {
-    UPDATE_NAME = 'UPDATE_NAME',
-    LOGIN = 'LOGIN',
-    LOGOUT = 'LOGOUT'
-}
+type ActionTypes = 'UPDATE_NAME' | 'LOGIN' | 'LOGOUT'
+
 export interface StateProps {
-    name: string;
+    name: string | undefined;
     isLogin: boolean;
 }
 
 export interface ActionProps {
     type: ActionTypes;
     key?: string;
-    data?: StateProps;
+    data?: string;
 }

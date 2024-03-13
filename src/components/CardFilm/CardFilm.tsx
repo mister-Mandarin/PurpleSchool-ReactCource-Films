@@ -3,17 +3,13 @@ import CardFilmRate from './CardFilmRate/CardFilmRate.tsx';
 import CardFilmFavorites from './CardFilmFavorites/CardFilmFavorites.tsx';
 
 interface CardFilmProps {
-	el: {
 		rate?: number;
 		img: string;
 		title?: string;
 		isFavorite: boolean;
-	};
 }
 
-export default function CardFilm({el}: CardFilmProps) {
-
-	const {rate, img, title, isFavorite} = el;
+export default function CardFilm({rate, img, title, isFavorite}: CardFilmProps) {
 
 	return (
 		<div className={styles.card}>

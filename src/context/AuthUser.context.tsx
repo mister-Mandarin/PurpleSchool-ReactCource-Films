@@ -1,13 +1,14 @@
-import {createContext, useEffect, useRef, useReducer} from 'react';
+import {createContext, useEffect, useRef, useReducer, Reducer} from 'react';
 import { actionsLoginForm, USER_STATE_DEFAULT } from '../FormLogin/FormLogin.state.ts';
 import {useLocalStorage} from '../hooks/useLocalStorage.ts';
-import {AuthUserProps} from './AuthUser.props.ts';
+import {AuthUserContextType, AuthUserProps} from './AuthUser.props.ts';
+import {ActionProps, StateProps} from '../FormLogin/FormLogin.props.ts';
 
-export const AuthContext = createContext(USER_STATE_DEFAULT);
+export const AuthContext = createContext<AuthUserContextType>({} as AuthUserContextType);
 
 export default function AuthUserContext({children}: AuthUserProps) {
 
-	const [state, dispatch] = useReducer(
+	const [state, dispatch] = useReducer<Reducer<StateProps, ActionProps>>(
 		actionsLoginForm,
 		USER_STATE_DEFAULT
 	);

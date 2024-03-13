@@ -18,7 +18,7 @@ export default function CardsField({data}: CardsFieldProps) {
 					return (
 						<CardFilm
 							key={el.id}
-							el={el}
+							{...el}
 						/>
 					);
 				}
