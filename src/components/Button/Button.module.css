@@ -4,14 +4,21 @@
     justify-content: center;
     align-items: center;
     border-radius: 12px;
-    border: 2px solid var(--Primary-400, #7B6EF6);
-    background: var(--Primary-400, #7B6EF6);
+    border: 2px solid var(--Primary-400);
+    background: var(--Primary-400);
     cursor: pointer;
 
-    color: var(--White-100, #FFF);
+    color: var(--White-100);
 
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 24px; /* 150% */
+
+    transition: background-color 0.3s ease, border-color 0.6s ease;
+}
+
+.button:hover {
+    background: var(--Primary-500);
+    border-color: var(--Primary-500);
 }

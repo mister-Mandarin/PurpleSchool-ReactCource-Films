@@ -1,0 +1,42 @@
+.layoutLink_container {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--Grey-200);
+}
+
+.layoutLink_container:hover {
+    text-decoration: underline;
+    color: var(--Grey-50);
+}
+
+.isActive {
+    color: var(--Grey-50);
+}
+
+.layoutContainer_user {
+    padding: 12px 32px;
+}
+
+.layoutLink {
+    font-weight: 600;
+    letter-spacing: 0.32px;
+
+}
+
+.linkNumber {
+    width: 24px;
+    height: 24px;
+    background: var(--Primary-400);
+    border-radius: 50%;
+    text-align: center;
+
+    color: var(--White-100);
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px; /* 171.429% */
+    letter-spacing: 0.28px;
+}

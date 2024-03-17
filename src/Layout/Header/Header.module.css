@@ -1,0 +1,30 @@
+.layoutWrapper {
+    width: 100%;
+    height: 80px;
+
+    background: rgba(18, 24, 41, 0.80);
+    backdrop-filter: blur(20px);
+}
+
+.layoutContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1210px;
+    height: 100%;
+    margin:0 auto;
+    padding: 0 5px;
+}
+
+.layoutIcon {
+    width: 40px;
+}
+
+.layoutLinks {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    color: var(--Grey-200);
+    margin: auto 0;
+}

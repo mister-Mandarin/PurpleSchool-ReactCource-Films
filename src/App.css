@@ -9,8 +9,10 @@
     --Black-65: #000000A6;
     --Black-80: #20283ECC;
     --Grey-50: #EBEEF5;
+    --Grey-100: #C3C8D4;
     --Grey-200: #A8AEBF;
     --Grey-300: #8E95A9;
+    --Grey-400: #767E94FF;
     --Grey-600: #475069;
     --Grey-700: #323B54;
     --Grey-900: #121829;
@@ -32,4 +34,8 @@
 
 body {
     background: var(--Grey-900);
+}
+
+dl, dd {
+    margin: 0;
 }

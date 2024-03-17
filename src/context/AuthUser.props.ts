@@ -1,5 +1,6 @@
 import {Dispatch, ReactNode, SetStateAction} from 'react';
-import {ActionProps, StateProps} from '../FormLogin/FormLogin.props.ts';
+import {ActionProps, StateProps} from '../pages/Login/Login.props.ts';
+import {FilmData} from '../components/CardsField/CardsField.props.ts';
 
 export interface AuthUserProps {
     children: ReactNode;
@@ -10,4 +11,5 @@ export interface AuthUserContextType {
     dispatch: Dispatch<ActionProps>;
     authState: StateProps;
     setAuthState: Dispatch<SetStateAction<StateProps>>;
+    data: FilmData[];
 }

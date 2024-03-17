@@ -7,9 +7,11 @@
 .descriptionTitle {
     font-size: 16px;
     line-height: 24px; /* 150% */
+    margin: 16px 0 24px 0;
 }
 
 .descriptionCard {
     font-size: 20px;
     line-height: 32px; /* 160% */
+    margin: 0;
 }

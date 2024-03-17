@@ -1,6 +1,7 @@
 import styles from './HeaderLink.module.css';
 import cn from 'classnames';
 import {HeaderLinkProps} from './HeaderLink.props.ts';
+import {NavLink} from 'react-router-dom';
 
 export default function HeaderLink({ children, icon, ...props}: HeaderLinkProps) {
 	let iconPath;
@@ -17,17 +18,19 @@ export default function HeaderLink({ children, icon, ...props}: HeaderLinkProps)
 	}
 
 	return (
-		<div
+		<NavLink
 			{...props}
-			className={cn(styles.layoutLink_container, {
-				[styles.layoutContainer_user]: typeof icon === 'string'
-			})}>
+			className={({isActive}) => cn(
+				styles.layoutLink_container, {
+					[styles.layoutContainer_user]: typeof icon === 'string',
+					[styles.isActive]: isActive
+				})}>
 			<span className={styles.layoutLink}>{children}</span>
 			{typeof icon === 'number' &&
 				<span className={styles.linkNumber}>{icon}</span>
 			}
 			{typeof icon === 'string' && <img src={iconPath} alt=""/>
 			}
-		</div>
+		</NavLink>
 	);
 }

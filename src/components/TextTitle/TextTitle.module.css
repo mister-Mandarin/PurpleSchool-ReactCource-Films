@@ -2,6 +2,7 @@
     color: var(--Grey-50, #EBEEF5);
     font-style: normal;
     font-weight: 600;
+    margin: 0;
 }
 
 .big {

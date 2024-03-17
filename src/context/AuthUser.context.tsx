@@ -1,8 +1,9 @@
 import {createContext, useEffect, useRef, useReducer, Reducer} from 'react';
-import { actionsLoginForm, USER_STATE_DEFAULT } from '../FormLogin/FormLogin.state.ts';
+import { actionsLoginForm, USER_STATE_DEFAULT } from '../pages/Login/Login.state.ts';
 import {useLocalStorage} from '../hooks/useLocalStorage.ts';
 import {AuthUserContextType, AuthUserProps} from './AuthUser.props.ts';
-import {ActionProps, StateProps} from '../FormLogin/FormLogin.props.ts';
+import {ActionProps, StateProps} from '../pages/Login/Login.props.ts';
+import data from '../components/CardsField/data/data.json';
 
 export const AuthContext = createContext<AuthUserContextType>({} as AuthUserContextType);
 
@@ -23,7 +24,7 @@ export default function AuthUserContext({children}: AuthUserProps) {
 
 	}, [state, authState, setAuthState]);
 
-	return <AuthContext.Provider value={{state, dispatch, authState, setAuthState}}>
+	return <AuthContext.Provider value={{state, dispatch, authState, setAuthState, data}}>
 		{children}
 	</AuthContext.Provider>;
 }

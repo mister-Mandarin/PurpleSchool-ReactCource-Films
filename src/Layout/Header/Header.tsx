@@ -1,6 +1,6 @@
 import styles from './Header.module.css';
-import HeaderLink from '../HeaderLink/HeaderLink.tsx';
-import Auth from '../Auth/Auth.tsx';
+import HeaderLink from './HeaderLink/HeaderLink.tsx';
+import Auth from './Auth/Auth.tsx';
 
 export default function Header() {
 
@@ -9,8 +9,8 @@ export default function Header() {
 			<div className={styles.layoutContainer}>
 				<img className={styles.layoutIcon} src="/bookmark.svg" alt=""/>
 				<nav className={styles.layoutLinks}>
-					<HeaderLink>Поиск фильмов</HeaderLink>
-					<HeaderLink icon={2}>Мои фильмы</HeaderLink>
+					<HeaderLink to='/'>Поиск фильмов</HeaderLink>
+					<HeaderLink to='/favorites' icon={2}>Мои фильмы</HeaderLink>
 					<Auth />
 				</nav>
 			</div>

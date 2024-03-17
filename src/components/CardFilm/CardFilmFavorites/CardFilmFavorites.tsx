@@ -3,11 +3,12 @@ import styles from './CardFilmFavorites.module.css';
 
 interface CardFilmFavoritesProps {
 	isFavorite: boolean;
+	className?:string;
 }
 
-export default function CardFilmFavorites({isFavorite}: CardFilmFavoritesProps) {
+export default function CardFilmFavorites({isFavorite, className}: CardFilmFavoritesProps) {
 	return (
-		<div className={cn(styles.favorite, {
+		<div className={cn(styles.favorite, className, {
 			[styles.favoriteTrue]: isFavorite,
 			[styles.favoriteFalse]: !isFavorite
 		}

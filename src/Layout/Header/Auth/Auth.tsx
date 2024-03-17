@@ -1,6 +1,6 @@
 import HeaderLink from '../HeaderLink/HeaderLink.tsx';
 import {useContext} from 'react';
-import {AuthContext} from '../../context/AuthUser.context.tsx';
+import {AuthContext} from '../../../context/AuthUser.context.tsx';
 
 export default function Auth() {
 	const {dispatch, authState} = useContext(AuthContext);
@@ -15,7 +15,7 @@ export default function Auth() {
 
 	if (!authState.isLogin) {
 		return (
-			<HeaderLink onClick={handleAuth} icon='login'>
+			<HeaderLink to='/login' onClick={handleAuth} icon='login'>
 				Войти
 			</HeaderLink>
 		);
@@ -23,10 +23,10 @@ export default function Auth() {
 
 	return (
 		<>
-			<HeaderLink icon="user">
+			<HeaderLink to='/profile' icon="user">
 				{authState.name}
 			</HeaderLink>
-			<HeaderLink onClick={handleAuth}>
+			<HeaderLink to='/login' onClick={handleAuth}>
 					Выйти
 			</HeaderLink>
 		</>); 

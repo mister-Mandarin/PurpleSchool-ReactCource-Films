@@ -12,6 +12,10 @@
     position: relative;
 }
 
+.link {
+text-decoration: none;
+}
+
 .card > img {
     border-radius: 8px;
     margin-bottom: 24px;

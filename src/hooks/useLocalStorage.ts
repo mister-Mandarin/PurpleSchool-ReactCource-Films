@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import {USER_STATE_DEFAULT} from '../FormLogin/FormLogin.state.ts';
-import {StateProps} from '../FormLogin/FormLogin.props.ts';
+import {USER_STATE_DEFAULT} from '../pages/Login/Login.state.ts';
+import {StateProps} from '../pages/Login/Login.props.ts';
 
 interface LocalStorageProps {
 	key: string;
