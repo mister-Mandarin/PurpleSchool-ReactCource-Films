@@ -9,19 +9,21 @@ export const AuthContext = createContext<AuthUserContextType>({} as AuthUserCont
 
 export default function AuthUserContext({children}: AuthUserProps) {
 
-	const [state, dispatch] = useReducer<Reducer<StateProps, ActionProps>>(
-		actionsLoginForm,
-		USER_STATE_DEFAULT
-	);
-	const {authState, setAuthState} = useLocalStorage({key: 'userData'});
+	// const [state, dispatch] = useReducer<Reducer<StateProps, ActionProps>>(
+	// 	actionsLoginForm,
+	// 	USER_STATE_DEFAULT
+	// );
+	const {
+		authState,
+		setStorageValue} = useLocalStorage({key: 'userData'});
 
-	useEffect(() => {
-		// setAuthState(state);
-		//dispatch({type: 'LOGIN', key: 'userData'});
-		console.log('authState', authState);
-	}, [authState, state]);
+	// useEffect(() => {
+	// 	// setAuthState(state);
+	// 	//dispatch({type: 'LOGIN', key: 'userData'});
+	// 	console.log('authState context', authState);
+	// }, [authState]);
 
-	return <AuthContext.Provider value={{state, dispatch, authState, setAuthState, data}}>
+	return <AuthContext.Provider value={{authState, setStorageValue, data}}>
 		{children}
 	</AuthContext.Provider>;
 }

@@ -1,21 +1,31 @@
 import styles from './Login.module.css';
 import Input from '../../components/Input/Input.tsx';
-import {ChangeEvent, FormEvent, useContext, useRef} from 'react';
+import {FormEvent, useContext, useState} from 'react';
 import Button from '../../components/Button/Button.tsx';
 import TextTitle from '../../components/TextTitle/TextTitle.tsx';
 import {AuthContext} from '../../context/AuthUser.context.tsx';
+import {useLocalStorage} from '../../hooks/useLocalStorage.ts';
+import {LoginForm} from './Login.props.ts';
+import TextParagraph from '../../components/TextParagraph/TextParagraph.tsx';
 
 export default function Login() {
-	const {state, dispatch } = useContext(AuthContext);
-	const inputRef = useRef(null);
+	//const {state, dispatch } = useContext(AuthContext);
+	const [error, setError] = useState<boolean>(false);
+	//const inputRef = useRef(null);
+	const {setStorageValue} = useContext(AuthContext);
 
-	function personLogin(e: FormEvent<HTMLFormElement>) {
+	async function personLogin(e: FormEvent) {
 		e.preventDefault();
-		dispatch({type: 'LOGIN', key: 'userData'});
-	}
-
-	function onChange(e: ChangeEvent<HTMLInputElement>) {
-		dispatch({type: 'UPDATE_NAME', data: e.target.value});
+		//console.log(e.target.loginName.value);
+		//dispatch({type: 'LOGIN', key: 'userData'});
+		const {loginName} = e.target as typeof e.target & LoginForm;
+		console.log('loginName.value ',loginName.value);
+		if (!loginName.value) {
+			setError(true);
+		} else {
+			setError(false);
+			setStorageValue(loginName.value);
+		}
 	}
 
 	return (
@@ -23,12 +33,15 @@ export default function Login() {
 			<TextTitle Tag='h1'>
 				Вход
 			</TextTitle>
+			{error && <TextParagraph styleParagraph='title'>Форма не заполнена!!!!</TextParagraph>}
 			<Input
+				id='loginName'
+				type='text'
 				placeholder='Ваше имя'
 				name='loginName'
-				ref={inputRef}
-				value={state.name}
-				onChange={onChange}
+				//ref={inputRef}
+				//value={state.name}
+				//onChange={onChange}
 			/>
 			<Button>Войти в профиль</Button>
 		</form>

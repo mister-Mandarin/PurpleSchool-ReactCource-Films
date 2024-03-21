@@ -5,17 +5,15 @@ import {AuthContext} from '../../../context/AuthUser.context.tsx';
 export default function Auth() {
 	const {dispatch, authState} = useContext(AuthContext);
 
-	function handleAuth() { 
+	function logOut() {
 		if (authState.isLogin) {
 			dispatch({ type: 'LOGOUT', key: 'userData' });
-		} else {
-			console.log('Нажат вход');
 		}
 	}
 
 	if (!authState.isLogin) {
 		return (
-			<HeaderLink to='/login' onClick={handleAuth} icon='login'>
+			<HeaderLink to='/login' icon='login'>
 				Войти
 			</HeaderLink>
 		);
@@ -26,7 +24,7 @@ export default function Auth() {
 			<HeaderLink to='/profile' icon="user">
 				{authState.name}
 			</HeaderLink>
-			<HeaderLink to='/login' onClick={handleAuth}>
+			<HeaderLink to='/login' onClick={logOut}>
 					Выйти
 			</HeaderLink>
 		</>); 

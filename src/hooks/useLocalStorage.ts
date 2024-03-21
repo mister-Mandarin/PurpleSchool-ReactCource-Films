@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
-import {USER_STATE_DEFAULT} from '../pages/Login/Login.state.ts';
 import {StateProps} from '../pages/Login/Login.props.ts';
 
 interface LocalStorageProps {
 	key: string;
 }
+
+export const USER_STATE_DEFAULT: StateProps = {
+	name:'',
+	isLogin: false
+};
 
 export const useLocalStorage = ({key}: LocalStorageProps) => {
 
@@ -14,25 +18,29 @@ export const useLocalStorage = ({key}: LocalStorageProps) => {
 			return getStorageValue(key);
 		});
 
-	// читаем по ключу при рендере
+	// читаем по ключу КАЖДЫЙ РАЗ при рендере
 	useEffect(() => {
 		setAuthState(getStorageValue(key));
 	}, [key]);
 
-	function getStorageValue(storageKey: string) {
-		const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
-		if (saved === null)  {
-			return setStorageValue(USER_STATE_DEFAULT);
+	function getStorageValue(key: string) {
+		const data = JSON.parse(localStorage.getItem(key) || 'null');
+		if (data === null)  {
+			localStorage.setItem(key, JSON.stringify(USER_STATE_DEFAULT));
 		}
-
-		return saved;
+		return data;
 	}
 
-	function setStorageValue(state: StateProps) {
-		const setUserData = JSON.stringify(state);
-		localStorage.setItem(key, setUserData);
-		return state;
+	function setStorageValue(data: string) {
+
+		const value = {
+			name: data,
+			isLogin: true
+		};
+
+		localStorage.setItem(key, JSON.stringify(value));
+		setAuthState(getStorageValue(key));
 	}
 
-	return {authState, setAuthState};
+	return {authState, setStorageValue};
 };

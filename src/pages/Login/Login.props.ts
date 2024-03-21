@@ -10,3 +10,9 @@ export interface ActionProps {
     key?: string;
     data?: string;
 }
+
+export interface LoginForm {
+    loginName: {
+        value: string;
+    }
+}
