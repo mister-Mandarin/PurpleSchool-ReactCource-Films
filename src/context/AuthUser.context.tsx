@@ -16,9 +16,10 @@ export default function AuthUserContext({children}: AuthUserProps) {
 	const {authState, setAuthState} = useLocalStorage({key: 'userData'});
 
 	useEffect(() => {
-		setAuthState(state);
-
-	}, [state, setAuthState]);
+		// setAuthState(state);
+		//dispatch({type: 'LOGIN', key: 'userData'});
+		console.log('authState', authState);
+	}, [authState, state]);
 
 	return <AuthContext.Provider value={{state, dispatch, authState, setAuthState, data}}>
 		{children}

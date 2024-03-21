@@ -13,7 +13,6 @@ export function actionsLoginForm(state: StateProps, action: ActionProps) {
 	case 'LOGIN': {
 		const newState = {...state, isLogin: true};
 		// постфикс оператор ! для ненулевых значений чтобы убрать ошибку
-		// 'string | undefined' is not assignable
 		localStorage.setItem(action.key!, JSON.stringify(newState));
 		return newState;
 	}
