@@ -1,4 +1,4 @@
-import {Dispatch, ReactNode, SetStateAction} from 'react';
+import {ReactNode} from 'react';
 import {StateProps} from '../pages/Login/Login.props.ts';
 import {FilmData} from '../components/CardsField/CardsField.props.ts';
 
@@ -7,10 +7,8 @@ export interface AuthUserProps {
 }
 
 export interface AuthUserContextType {
-   // state: StateProps;
-   // dispatch: Dispatch<ActionProps>;
     setStorageValue: (data: string) => void;
+    setDefaultValue: () => void;
     authState: StateProps;
-    setAuthState: Dispatch<SetStateAction<StateProps>>;
     data: FilmData[];
 }

@@ -3,12 +3,10 @@ import {useContext} from 'react';
 import {AuthContext} from '../../../context/AuthUser.context.tsx';
 
 export default function Auth() {
-	const {dispatch, authState} = useContext(AuthContext);
+	const {setDefaultValue, authState} = useContext(AuthContext);
 
 	function logOut() {
-		if (authState.isLogin) {
-			dispatch({ type: 'LOGOUT', key: 'userData' });
-		}
+		setDefaultValue();
 	}
 
 	if (!authState.isLogin) {

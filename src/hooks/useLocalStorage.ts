@@ -26,7 +26,7 @@ export const useLocalStorage = ({key}: LocalStorageProps) => {
 	function getStorageValue(key: string) {
 		const data = JSON.parse(localStorage.getItem(key) || 'null');
 		if (data === null)  {
-			localStorage.setItem(key, JSON.stringify(USER_STATE_DEFAULT));
+			setDefaultValue();
 		}
 		return data;
 	}
@@ -42,5 +42,10 @@ export const useLocalStorage = ({key}: LocalStorageProps) => {
 		setAuthState(getStorageValue(key));
 	}
 
-	return {authState, setStorageValue};
+	function setDefaultValue() {
+		localStorage.setItem(key, JSON.stringify(USER_STATE_DEFAULT));
+		setAuthState(getStorageValue(key));
+	}
+
+	return {authState, setStorageValue, setDefaultValue};
 };
