@@ -1,23 +1,22 @@
 import styles from './CardsField.module.css';
 import CardFilm from '../CardFilm/CardFilm.tsx';
-import TextParagraph from '../TextParagraph/TextParagraph.tsx';
 import {CardsFieldProps} from './CardsField.props.ts';
+import Error from '../../pages/Error/Error.tsx';
 
-export default function CardsField({data}: CardsFieldProps) {
+export default function CardsField(props: CardsFieldProps) {
 
-	if (!data) {
-		return <TextParagraph styleParagraph='title'>
-			Нет данных для отображения
-		</TextParagraph>;
+	if (!props.ok || !props) {
+		console.log(props);
+		return <Error />;
 	}
 
 	return (
 		<div className={styles.cardsField}>
-			{data.map(el => {
-				if (el.id) {
+			{props.description.map(el => {
+				if (el['#IMDB_ID']) {
 					return (
 						<CardFilm
-							key={el.id}
+							key={el['#IMDB_ID']}
 							{...el}
 						/>
 					);

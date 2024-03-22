@@ -11,10 +11,10 @@ export default function CardItem(props: FilmDataFull) {
 		<article>
 			<header className={styles.cardItemHeader}>
 				<span className={styles.subTitle}>Название фильма</span>
-				<TextTitle className={styles.title} Tag='h2'>{props.title}</TextTitle>
+				<TextTitle className={styles.title} Tag='h2'>{props.short}</TextTitle>
 			</header>
 			<div className={styles.cardItemContent}>
-				<img src={props.img} alt="" className={styles.image} />
+				<img src={props.image} alt="" className={styles.image} />
 				<div className={styles.details}>
 					<TextParagraph styleParagraph='card'>
 						{props.description}

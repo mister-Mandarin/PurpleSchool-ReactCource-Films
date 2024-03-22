@@ -10,9 +10,16 @@ export default function Favorites() {
 	const {data} = useContext(AuthContext);
 
 	if (!data) {
-		return <TextParagraph styleParagraph='title'>
+		return(
+			<>
+				<TextTitle Tag='h1'>
+					Избранное
+				</TextTitle>
+				<TextParagraph styleParagraph='title'>
             Нет данных для отображения
-		</TextParagraph>;
+				</TextParagraph>;
+			</>
+		);
 	}
 
 	return (

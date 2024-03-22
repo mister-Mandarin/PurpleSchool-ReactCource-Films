@@ -1,13 +1,14 @@
 export interface FilmData {
-    id: number;
-    rate?: number;
-    img: string;
-    title?: string;
-    isFavorite: boolean;
+    '#IMDB_ID': number;
+    '#RANK'?: number;
+    '#IMG_POSTER': string;
+    '#TITLE'?: string;
 }
 
 export interface CardsFieldProps {
-    data: FilmData[];
+    ok: boolean;
+    description: FilmData[];
+    error_code: number;
 }
 
 //исключаем уже существующие свойства из интерфейса
