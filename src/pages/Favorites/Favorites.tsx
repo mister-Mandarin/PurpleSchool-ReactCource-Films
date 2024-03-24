@@ -1,13 +1,9 @@
 import TextTitle from '../../components/TextTitle/TextTitle.tsx';
-import {useContext} from 'react';
-import {AuthContext} from '../../context/AuthUser.context.tsx';
 import TextParagraph from '../../components/TextParagraph/TextParagraph.tsx';
 import styles from '../../components/CardsField/CardsField.module.css';
 import CardFilm from '../../components/CardFilm/CardFilm.tsx';
 
 export default function Favorites() {
-
-	const {data} = useContext(AuthContext);
 
 	if (!data) {
 		return(
