@@ -11,6 +11,8 @@ import Favorites from './pages/Favorites/Favorites.tsx';
 import Profile from './pages/Profile/Profile.tsx';
 import {DEFAULT_URL} from './heplers/API.ts';
 import {FilmDataAll} from './components/CardsField/CardsField.props.ts';
+import CheckAuth from './heplers/CheсkAuth.tsx';
+import AuthLayout from './Layout/Auth/AuthLayout.tsx';
 
 
 async function loader({ params }) {
@@ -29,21 +31,17 @@ async function loader({ params }) {
 }
 
 const Movie = lazy(() => import('./pages/Movie/Movie.tsx'));
-const Body = lazy(() => import('./Layout/Body/Body.tsx'));
+const BodyLayout = lazy(() => import('./Layout/Body/BodyLayout.tsx'));
 
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <Body />,
+		element: <CheckAuth><BodyLayout /></CheckAuth>,
 		children: [
 			{
 				path: '/',
-				element: <Main />,
+				element: <Main/>,
 				errorElement: <Error title='Сервер недоступен. Ошибка 404'/>
-			},
-			{
-				path: '/login',
-				element: <Login />
 			},
 			{
 				path: '/favorites',
@@ -59,12 +57,22 @@ const router = createBrowserRouter([
 				errorElement: <Error title='Не могу найти данные фильма. Попробуйте позже'/>,
 				// https://reactrouter.com/en/6.19.0/route/loader
 				loader: loader
-			},
-			{
-				path: '*',
-				element: <Error title='Упс... Ничего не найдено' subtitle='Попробуйте изменить запрос или ввести более точное название фильма' />
 			}
 		]
+	},
+	{
+		path: '/login',
+		element: <AuthLayout />,
+		children: [
+			{
+				path: '/login',
+				element: <Login />
+			}
+		]
+	},
+	{
+		path: '*',
+		element: <Error title='Упс... Ничего не найдено' subtitle='Попробуйте изменить запрос или ввести более точное название фильма' />
 	}
 ]);
 

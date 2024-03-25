@@ -6,10 +6,12 @@ import TextTitle from '../../components/TextTitle/TextTitle.tsx';
 import {AuthContext} from '../../context/AuthUser.context.tsx';
 import {LoginForm} from './Login.props.ts';
 import TextParagraph from '../../components/TextParagraph/TextParagraph.tsx';
+import {useNavigate} from 'react-router-dom';
 
 export default function Login() {
 	const [error, setError] = useState<boolean>(false);
 	const {setStorageValue} = useContext(AuthContext);
+	const navigate = useNavigate();
 
 	async function personLogin(e: FormEvent) {
 		e.preventDefault();
@@ -20,6 +22,7 @@ export default function Login() {
 		} else {
 			setError(false);
 			setStorageValue(loginName.value);
+			navigate('/');
 		}
 	}
 

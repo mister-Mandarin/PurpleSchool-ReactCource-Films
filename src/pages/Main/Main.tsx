@@ -1,9 +1,8 @@
 import CardsField from '../../components/CardsField/CardsField.tsx';
 import Search from '../../components/Search/Search.tsx';
-import React, {ChangeEvent, FormEvent, useState} from 'react';
+import {ChangeEvent, FormEvent, useState} from 'react';
 import {DEFAULT_URL} from '../../heplers/API.ts';
 import {CardsFieldProps} from '../../components/CardsField/CardsField.props.ts';
-import TextTitle from '../../components/TextTitle/TextTitle.tsx';
 import Error from '../Error/Error.tsx';
 
 const INITIAL_STATE_DATA: CardsFieldProps = {
@@ -44,7 +43,9 @@ export default function Body() {
 			setIsLoading(false);
 
 		} catch (error) {
-			setError(error);
+			if (error instanceof Error) {
+				setError(error);
+			}
 			setIsLoading(false);
 			return;
 		}

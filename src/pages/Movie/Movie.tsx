@@ -10,7 +10,7 @@ export default function Movie() {
 	const CardItem = lazy(() => import('../../components/CardItem/CardItem.tsx'));
 
 	return (
-		// почему то не отрабатывает...
+		// почему то не отрабатывает fallback...
 		<Suspense fallback={<Error title='Загружаю данные фильма...'/>}>
 			<Await resolve={short}>
 				{({short}) => (
