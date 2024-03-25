@@ -12,18 +12,18 @@ export interface CardsFieldProps {
 }
 
 export interface FilmDataAll extends FilmDataShort {
-    short: FilmDataShort;
+    //short: FilmDataShort;
 }
 
 export interface FilmDataShort {
     name: string;
     image: string;
     description: string;
-    aggregateRating: AggregateRating;
+    aggregateRating?: AggregateRating | undefined;
     isFavorite: boolean;
     '@type': string;
     datePublished: string;
-    duration: string;
+    duration?: string;
     genre: string[];
     review: Review;
 }
@@ -33,7 +33,7 @@ export interface AggregateRating {
     ratingCount: number;
     bestRating: number;
     worstRating: number;
-    ratingValue: number;
+    ratingValue?: number;
 }
 
 export interface Review {

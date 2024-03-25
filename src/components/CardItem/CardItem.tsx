@@ -5,13 +5,18 @@ import CardFilmFavorites from '../CardFilm/CardFilmFavorites/CardFilmFavorites.t
 import styles from './CardItem.module.css';
 import TextParagraph from '../TextParagraph/TextParagraph.tsx';
 
-interface CardItemProps {
-	props: FilmDataShort;
-}
+// interface CardItemProps {
+// 	props: FilmDataShort;
+// }
 
 export default function CardItem(props: FilmDataShort) {
 
-	function parseDuration(duration: string) {
+	function parseDuration(duration: string | undefined): string {
+
+		if (!duration) {
+			return '-';
+		}
+
 		return duration
 			.replace('PT', '')
 			.replace('H', ' ч ')
@@ -33,14 +38,14 @@ export default function CardItem(props: FilmDataShort) {
 						{props.description}
 					</TextParagraph>
 					<div className={styles.additionalDetails}>
-						<CardFilmRate className={styles.rate} rate={props.aggregateRating.ratingValue} />
+						<CardFilmRate className={styles.rate} rate={props.aggregateRating?.ratingValue}/>
 						<CardFilmFavorites className={styles.isFavorite} isFavorite={props.isFavorite} />
 					</div>
 					<dl className={styles.propertyList}>
 						<dt className={styles.subTitle}>Тип</dt>
 						<dd className={styles.value}>{props['@type']}</dd>
 						<dt className={styles.subTitle}>Дата выхода</dt>
-						<dd className={styles.value}>{props.datePublished}</dd>
+						<dd className={styles.value}>{props.datePublished || '-'}</dd>
 						<dt className={styles.subTitle}>Длительность</dt>
 						<dd className={styles.value}>{parseDuration(props.duration)}</dd>
 						<dt className={styles.subTitle}>Жанр</dt>
@@ -50,7 +55,7 @@ export default function CardItem(props: FilmDataShort) {
 					</dl>
 				</div>
 			</div>
-			<section className={styles.cardItemReview}>
+			{props.review && <section className={styles.cardItemReview}>
 				<span className={styles.subTitle}>Отзыв</span>
 				<div className={styles.review}>
 					<div className={styles.reviewTitle}>
@@ -61,7 +66,7 @@ export default function CardItem(props: FilmDataShort) {
 						{props.review.reviewBody}
 					</TextParagraph>
 				</div>
-			</section>
+			</section>}
 		</article>
 	);
 }

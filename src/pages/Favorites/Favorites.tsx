@@ -1,9 +1,11 @@
 import TextTitle from '../../components/TextTitle/TextTitle.tsx';
 import TextParagraph from '../../components/TextParagraph/TextParagraph.tsx';
-import styles from '../../components/CardsField/CardsField.module.css';
-import CardFilm from '../../components/CardFilm/CardFilm.tsx';
+//import styles from '../../components/CardsField/CardsField.module.css';
+//import CardFilm from '../../components/CardFilm/CardFilm.tsx';
 
 export default function Favorites() {
+
+	const data = {};
 
 	if (!data) {
 		return(
@@ -24,18 +26,18 @@ export default function Favorites() {
                 Избранное
 			</TextTitle>
 
-			<div className={styles.cardsField}>
-				{data.map(el => {
-					if (el.id && el.isFavorite) {
-						return (
-							<CardFilm
-								key={el.id}
-								{...el}
-							/>
-						);
-					}
-				})}
-			</div>
+			{/*<div className={styles.cardsField}>*/}
+			{/*	{data.map(el => {*/}
+			{/*		if (el.id && el.isFavorite) {*/}
+			{/*			return (*/}
+			{/*				<CardFilm*/}
+			{/*					key={el.id}*/}
+			{/*					{...el}*/}
+			{/*				/>*/}
+			{/*			);*/}
+			{/*		}*/}
+			{/*	})}*/}
+			{/*</div>*/}
 		</>
 	);
 }

@@ -1,21 +1,22 @@
 import {Await, useLoaderData} from 'react-router-dom';
-import {Suspense} from 'react';
-import CardItem from '../../components/CardItem/CardItem.tsx';
+import {lazy, Suspense} from 'react';
 import {FilmDataAll, FilmDataShort} from '../../components/CardsField/CardsField.props.ts';
+import Error from '../Error/Error.tsx';
 
-export default function Product() {
+export default function Movie() {
 
 	const data = useLoaderData() as FilmDataShort;
-	const short = data.short as FilmDataAll;
-	console.log('short ',data);
-	return <>
-		<Suspense fallback={'Загружаю...'}>
-			<Await resolve={short}>
+	const short = data as FilmDataAll;
+	const CardItem = lazy(() => import('../../components/CardItem/CardItem.tsx'));
 
+	return (
+		// почему то не отрабатывает...
+		<Suspense fallback={<Error title='Загружаю данные фильма...'/>}>
+			<Await resolve={short}>
 				{({short}) => (
 					<CardItem {...short} />
 				)}
 			</Await>
 		</Suspense>
-	</>;
+	);
 }
