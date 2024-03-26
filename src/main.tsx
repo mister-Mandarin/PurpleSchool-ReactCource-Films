@@ -13,11 +13,11 @@ import {DEFAULT_URL} from './heplers/API.ts';
 import {FilmDataAll} from './components/CardsField/CardsField.props.ts';
 import CheckAuth from './heplers/CheсkAuth.tsx';
 import AuthLayout from './Layout/Auth/AuthLayout.tsx';
+import BodyLayout from './Layout/Body/BodyLayout.tsx';
 
 
 async function loader({ params }) {
 	try {
-		//const response = await fetch(`${DEFAULT_URL}/?tt=${params.}`);
 		const response = await fetch(`${DEFAULT_URL}/?tt=${params.id}`);
 		if (!response.ok) {
 			return;
@@ -31,7 +31,6 @@ async function loader({ params }) {
 }
 
 const Movie = lazy(() => import('./pages/Movie/Movie.tsx'));
-const BodyLayout = lazy(() => import('./Layout/Body/BodyLayout.tsx'));
 
 const router = createBrowserRouter([
 	{
