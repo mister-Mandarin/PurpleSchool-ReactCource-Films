@@ -1,0 +1,1 @@
+export const DEFAULT_URL = 'https://search.imdbot.workers.dev';

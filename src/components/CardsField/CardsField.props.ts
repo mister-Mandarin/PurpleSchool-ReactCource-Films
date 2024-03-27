@@ -1,16 +1,45 @@
 export interface FilmData {
-    id: number;
-    rate?: number;
-    img: string;
-    title?: string;
-    isFavorite: boolean;
+    '#IMDB_ID': number;
+    '#RANK'?: number;
+    '#IMG_POSTER': string;
+    '#TITLE'?: string;
 }
 
 export interface CardsFieldProps {
-    data: FilmData[];
+    ok: boolean;
+    description: FilmData[];
+    error_code: number;
 }
 
-//исключаем уже существующие свойства из интерфейса
-export interface FilmDataFull extends Omit<FilmData, keyof FilmData> {
-    [key: string]: string;
+export interface FilmDataAll extends FilmDataShort {
+    //short: FilmDataShort;
+}
+
+export interface FilmDataShort {
+    name: string;
+    image: string;
+    description: string;
+    aggregateRating?: AggregateRating | undefined;
+    isFavorite: boolean;
+    '@type': string;
+    datePublished: string;
+    duration?: string;
+    genre: string[];
+    review: Review;
+}
+
+export interface AggregateRating {
+    '@type': string;
+    ratingCount: number;
+    bestRating: number;
+    worstRating: number;
+    ratingValue?: number;
+}
+
+export interface Review {
+    '@type': string;
+    dateCreated: string;
+    inLanguage: string;
+    name: string;
+    reviewBody: string;
 }

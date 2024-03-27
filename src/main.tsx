@@ -1,42 +1,77 @@
-import React from 'react';
+import React, {lazy} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './App.css';
-import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import {createBrowserRouter, defer, RouterProvider} from 'react-router-dom';
 import AuthUserContext from './context/AuthUser.context.tsx';
 import Main from  './pages/Main/Main.tsx';
 import Error from './pages/Error/Error.tsx';
 import Login from './pages/Login/Login.tsx';
-import Body from './Layout/Body/Body.tsx';
 import Favorites from './pages/Favorites/Favorites.tsx';
-import Movie from './pages/Movie/Movie.tsx';
+import Profile from './pages/Profile/Profile.tsx';
+import {DEFAULT_URL} from './heplers/API.ts';
+import {FilmDataAll} from './components/CardsField/CardsField.props.ts';
+import CheckAuth from './heplers/CheсkAuth.tsx';
+import AuthLayout from './Layout/Auth/AuthLayout.tsx';
+import BodyLayout from './Layout/Body/BodyLayout.tsx';
+
+
+async function loader({ params }) {
+	try {
+		const response = await fetch(`${DEFAULT_URL}/?tt=${params.id}`);
+		if (!response.ok) {
+			return;
+		}
+		const data = await response.json() as FilmDataAll;
+		return data;
+	} catch (e) {
+		console.error('Ошибка!!! ', e);
+		return;
+	}
+}
+
+const Movie = lazy(() => import('./pages/Movie/Movie.tsx'));
 
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <Body />,
+		element: <CheckAuth><BodyLayout /></CheckAuth>,
 		children: [
 			{
 				path: '/',
-				element: <Main />
-			},
-			{
-				path: '/login',
-				element: <Login />
+				element: <Main/>,
+				errorElement: <Error title='Сервер недоступен. Ошибка 404'/>
 			},
 			{
 				path: '/favorites',
 				element: <Favorites />
 			},
 			{
-				path: '/movie/:id',
-				element: <Movie />
+				path: '/profile',
+				element: <Profile />
 			},
 			{
-				path: '*',
-				element: <Error />
+				path: '/movie/:id',
+				element: <Movie />,
+				errorElement: <Error title='Не могу найти данные фильма. Попробуйте позже'/>,
+				// https://reactrouter.com/en/6.19.0/route/loader
+				loader: loader
 			}
 		]
+	},
+	{
+		path: '/login',
+		element: <AuthLayout />,
+		children: [
+			{
+				path: '/login',
+				element: <Login />
+			}
+		]
+	},
+	{
+		path: '*',
+		element: <Error title='Упс... Ничего не найдено' subtitle='Попробуйте изменить запрос или ввести более точное название фильма' />
 	}
 ]);
 

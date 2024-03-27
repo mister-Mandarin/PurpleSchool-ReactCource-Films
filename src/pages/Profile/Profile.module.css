@@ -1,0 +1,11 @@
+.errorPage {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.errorTitle {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 56px;
+}

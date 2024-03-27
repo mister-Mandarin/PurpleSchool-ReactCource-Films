@@ -13,20 +13,24 @@ export const USER_STATE_DEFAULT: StateProps = {
 export const useLocalStorage = ({key}: LocalStorageProps) => {
 
 	const [authState, setAuthState] = useState<StateProps>(
-		// устанавливаем начальное состояние с помощью функции
+		//устанавливаем начальное состояние с помощью функции
 		() => {
-			return getStorageValue(key);
-		});
+			return getStorageValue() || USER_STATE_DEFAULT;
+		}
+	);
 
 	// читаем по ключу КАЖДЫЙ РАЗ при рендере
 	useEffect(() => {
-		setAuthState(getStorageValue(key));
+		setAuthState(getStorageValue());
 	}, [key]);
 
-	function getStorageValue(key: string) {
+	function getStorageValue() {
 		const data = JSON.parse(localStorage.getItem(key) || 'null');
-		if (data === null)  {
-			setDefaultValue();
+
+		if (!data)  {
+			localStorage.setItem(key, JSON.stringify(USER_STATE_DEFAULT));
+			getStorageValue();
+			return; 
 		}
 		return data;
 	}
@@ -39,12 +43,13 @@ export const useLocalStorage = ({key}: LocalStorageProps) => {
 		};
 
 		localStorage.setItem(key, JSON.stringify(value));
-		setAuthState(getStorageValue(key));
+		const store = JSON.parse(localStorage.getItem(key) || 'null');
+		setAuthState(store);
 	}
 
 	function setDefaultValue() {
 		localStorage.setItem(key, JSON.stringify(USER_STATE_DEFAULT));
-		setAuthState(getStorageValue(key));
+		setAuthState(getStorageValue());
 	}
 
 	return {authState, setStorageValue, setDefaultValue};

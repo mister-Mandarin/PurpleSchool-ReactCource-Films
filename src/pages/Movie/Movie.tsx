@@ -1,17 +1,22 @@
-import {useParams} from 'react-router-dom';
-import {useContext} from 'react';
-import CardItem from '../../components/CardItem/CardItem.tsx';
-import {AuthContext} from '../../context/AuthUser.context.tsx';
-import {FilmDataFull} from '../../components/CardsField/CardsField.props.ts';
+import {Await, useLoaderData} from 'react-router-dom';
+import {lazy, Suspense} from 'react';
+import {FilmDataAll, FilmDataShort} from '../../components/CardsField/CardsField.props.ts';
+import Error from '../Error/Error.tsx';
 
-export default function Product() {
+export default function Movie() {
 
-	const {id} = useParams();
-	const {data} = useContext(AuthContext);
+	const data = useLoaderData() as FilmDataShort;
+	const short = data as FilmDataAll;
+	const CardItem = lazy(() => import('../../components/CardItem/CardItem.tsx'));
 
-	const selectedItem = data.find(el => el.id === Number(id)) as FilmDataFull | undefined;
-
-	if (selectedItem) {
-		return <CardItem {...selectedItem} />;
-	}
+	return (
+		// почему то не отрабатывает fallback...
+		<Suspense fallback={<Error title='Загружаю данные фильма...'/>}>
+			<Await resolve={short}>
+				{({short}) => (
+					<CardItem {...short} />
+				)}
+			</Await>
+		</Suspense>
+	);
 }
