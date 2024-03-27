@@ -1,6 +1,6 @@
 import CardsField from '../../components/CardsField/CardsField.tsx';
 import Search from '../../components/Search/Search.tsx';
-import {ChangeEvent, FormEvent, useState} from 'react';
+import {ChangeEvent, FormEvent, useEffect, useState} from 'react';
 import {DEFAULT_URL} from '../../heplers/API.ts';
 import {CardsFieldProps} from '../../components/CardsField/CardsField.props.ts';
 import Error from '../Error/Error.tsx';
@@ -13,7 +13,7 @@ const INITIAL_STATE_DATA: CardsFieldProps = {
 
 export default function Body() {
 
-	const [search, setSearch] = useState<string | null>(null);
+	const [search, setSearch] = useState<string | null>('pokemons');
 	const [data, setData] = useState<CardsFieldProps>(INITIAL_STATE_DATA);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string | undefined>();
@@ -24,6 +24,10 @@ export default function Body() {
 			getFilms();
 		}
 	}
+
+	useEffect(() => {
+		getFilms();
+	}, []);
 
 	async function getFilms() {
 		try {

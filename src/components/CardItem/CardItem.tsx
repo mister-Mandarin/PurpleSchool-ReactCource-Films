@@ -5,11 +5,8 @@ import CardFilmFavorites from '../CardFilm/CardFilmFavorites/CardFilmFavorites.t
 import styles from './CardItem.module.css';
 import TextParagraph from '../TextParagraph/TextParagraph.tsx';
 
-// interface CardItemProps {
-// 	props: FilmDataShort;
-// }
-
 export default function CardItem(props: FilmDataShort) {
+	//const props = useAsyncValue();
 
 	function parseDuration(duration: string | undefined): string {
 
