@@ -1,20 +1,21 @@
 import {Await, useLoaderData} from 'react-router-dom';
-import {lazy, Suspense} from 'react';
-import {FilmDataAll, FilmDataShort} from '../../components/CardsField/CardsField.props.ts';
+import {Suspense} from 'react';
+import {CardsFieldProps} from '../../components/CardsField/CardsField.props.ts';
 import Error from '../Error/Error.tsx';
+import CardItem from '../../components/CardItem/CardItem.tsx';
 
 export default function Movie() {
 
-	const data = useLoaderData() as FilmDataShort;
-	const short = data as FilmDataAll;
-	const CardItem = lazy(() => import('../../components/CardItem/CardItem.tsx'));
+	const data = useLoaderData() as CardsFieldProps;
+
+	console.log('data useLoaderData ', data);
 
 	return (
 		// почему то не отрабатывает fallback...
 		<Suspense fallback={<Error title='Загружаю данные фильма...'/>}>
-			<Await resolve={short}>
-				{({short}) => (
-					<CardItem {...short} />
+			<Await resolve={data}>
+				{(data) => (
+					<CardItem {...data} />
 				)}
 			</Await>
 		</Suspense>

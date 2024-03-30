@@ -1,27 +1,22 @@
 import CardsField from '../../components/CardsField/CardsField.tsx';
 import Search from '../../components/Search/Search.tsx';
 import {ChangeEvent, FormEvent, useEffect, useState} from 'react';
-import {DEFAULT_URL} from '../../heplers/API.ts';
+import {DEFAULT_URL, options} from '../../heplers/API.ts';
 import {CardsFieldProps} from '../../components/CardsField/CardsField.props.ts';
 import Error from '../Error/Error.tsx';
 
-const INITIAL_STATE_DATA: CardsFieldProps = {
-	ok: false,
-	description: [],
-	error_code: 0
-};
 
 export default function Body() {
 
-	const [search, setSearch] = useState<string | null>('pokemons');
-	const [data, setData] = useState<CardsFieldProps>(INITIAL_STATE_DATA);
+	const [search, setSearch] = useState<string | null>('pokemon');
+	const [data, setData] = useState<CardsFieldProps>({results: []});
 	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const [error, setError] = useState<string | undefined>();
+	const [error, setError] = useState<boolean>(false);
 
-	function searchFilms(e: FormEvent) {
+	async function searchFilms(e: FormEvent) {
 		e.preventDefault();
 		if (search) {
-			getFilms();
+			await getFilms();
 		}
 	}
 
@@ -32,24 +27,25 @@ export default function Body() {
 	async function getFilms() {
 		try {
 			setIsLoading(true);
-			const response = await fetch(`${DEFAULT_URL}/?q=${search}`);
+			setError(false);
+			//const response = await fetch(`${DEFAULT_URL}/titles/search/keyword/${search}`, options);
+			const response = await fetch(`${DEFAULT_URL}/titles/search/keyword/${search}`, options);
 			if (!response.ok) {
 				return;
 			}
 			const data = await response.json() as CardsFieldProps;
 			console.log('data ', data);
 
-			if (!data.description.length) {
-				setError('Фильм не найден');
+			if (!data.results.length) {
+				setError(true);
 			}
-			setError(undefined);
-			setData(data);
+
 			setIsLoading(false);
+			setData(data);
+			return;
 
 		} catch (error) {
-			if (error instanceof Error) {
-				setError(error);
-			}
+			setError(true);
 			setIsLoading(false);
 			return;
 		}
@@ -62,10 +58,9 @@ export default function Body() {
 	return (
 		<>
 			<Search onChange={updateSearch} searchFilms={searchFilms}/>
-			{error && <Error title='Произошла ошибка' subtitle={error}/>}
+			{error && <Error title='Произошла ошибка' subtitle='фильм не найден' />}
 			{isLoading && <Error title='Загружаю список фильмов...' subtitle='Осталось совсем чуть-чуть' />}
-			{!isLoading && <CardsField {...data}/>} 
-
+			{!isLoading && <CardsField {...data}/>}
 		</>
 	);
 }

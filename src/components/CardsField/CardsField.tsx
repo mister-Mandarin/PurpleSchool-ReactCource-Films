@@ -4,17 +4,17 @@ import {CardsFieldProps} from './CardsField.props.ts';
 
 export default function CardsField(props: CardsFieldProps) {
 
-	if (!props.ok || !props) {
+	if (!props) {
 		return;
 	}
 
 	return (
 		<div className={styles.cardsField}>
-			{props.description.map(el => {
-				if (el['#IMDB_ID']) {
+			{props.results?.map(el => {
+				if (el.id) {
 					return (
 						<CardFilm
-							key={el['#IMDB_ID']}
+							key={el.id}
 							{...el}
 						/>
 					);

@@ -1,45 +1,51 @@
-export interface FilmData {
-    '#IMDB_ID': number;
-    '#RANK'?: number;
-    '#IMG_POSTER': string;
-    '#TITLE'?: string;
-}
-
 export interface CardsFieldProps {
-    ok: boolean;
-    description: FilmData[];
-    error_code: number;
+    results: FilmData[];
 }
 
-export interface FilmDataAll extends FilmDataShort {
-    //short: FilmDataShort;
+export interface FilmData {
+    id: string
+    primaryImage: PrimaryImage
+    titleType: TitleType
+    titleText: TitleText
+    originalTitleText: OriginalTitleText
+    releaseDate: ReleaseDate
+    position?: number
 }
 
-export interface FilmDataShort {
-    name: string;
-    image: string;
-    description: string;
-    aggregateRating?: AggregateRating | undefined;
-    isFavorite: boolean;
-    '@type': string;
-    datePublished: string;
-    duration?: string;
-    genre: string[];
-    review: Review;
+export interface PrimaryImage {
+    id: string
+    width: number
+    height: number
+    url: string
+    caption: Caption
+    __typename: string
 }
 
-export interface AggregateRating {
-    '@type': string;
-    ratingCount: number;
-    bestRating: number;
-    worstRating: number;
-    ratingValue?: number;
+export interface Caption {
+    plainText: string
+    __typename: string
 }
 
-export interface Review {
-    '@type': string;
-    dateCreated: string;
-    inLanguage: string;
-    name: string;
-    reviewBody: string;
+export interface TitleType {
+    text: string
+    id: string
+    isSeries: boolean
+    isEpisode: boolean
+    __typename: string
+}
+
+export interface TitleText {
+    text: string
+}
+
+export interface OriginalTitleText {
+    text: string
+    __typename: string
+}
+
+export interface ReleaseDate {
+    day: number
+    month: number
+    year: number
+    __typename: string
 }

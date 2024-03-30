@@ -7,11 +7,11 @@ import {FilmData} from '../CardsField/CardsField.props.ts';
 export default function CardFilm(props: FilmData) {
 
 	return (
-		<Link to={`/movie/${props['#IMDB_ID']}`} className={styles.link}>
+		<Link to={`/movie/${props.id}`} className={styles.link}>
 			<div className={styles.card}>
-				{props['#RANK'] && <CardFilmRate rate={props['#RANK']}/>}
-				<img src={props['#IMG_POSTER']} alt=""/>
-				{props['#TITLE'] && <span>{props['#TITLE'] || ''}</span>}
+				{props.position && <CardFilmRate rate={props.position}/>}
+				<img src={props.primaryImage?.url} alt=""/>
+				{props.originalTitleText.text && <span>{props.originalTitleText.text || ''}</span>}
 				<CardFilmFavorites isFavorite={false}/>
 			</div>
 		</Link>
