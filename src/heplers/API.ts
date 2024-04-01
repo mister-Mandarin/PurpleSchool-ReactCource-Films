@@ -1,13 +1,11 @@
 // Апишка отсюда
 // https://rapidapi.com/SAdrian/api/moviesdatabase
 
-const apiKey = null;
-const host = 'moviesdatabase.p.rapidapi.com';
-export const DEFAULT_URL = `https://${host}`;
+export const DEFAULT_URL = `https://${import.meta.env.VITE_BASE_URL}`;
 
 export const options = {
 	headers: {
-		'X-RapidAPI-Key': apiKey,
-		'X-RapidAPI-Host': host
+		'X-RapidAPI-Key': import.meta.env.VITE_API_KEY,
+		'X-RapidAPI-Host': import.meta.env.VITE_BASE_URL
 	}
 };
