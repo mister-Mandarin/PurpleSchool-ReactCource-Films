@@ -1,17 +1,24 @@
 import styles from './Login.module.css';
 import Input from '../../components/Input/Input.tsx';
-import {FormEvent, useContext, useState} from 'react';
+import {FormEvent, useState} from 'react';
 import Button from '../../components/Button/Button.tsx';
 import TextTitle from '../../components/TextTitle/TextTitle.tsx';
-import {AuthContext} from '../../context/AuthUser.context.tsx';
-import {LoginForm} from './Login.props.ts';
 import TextParagraph from '../../components/TextParagraph/TextParagraph.tsx';
 import {useNavigate} from 'react-router-dom';
+import {AppDispatch} from '../../store/store.ts';
+import {useDispatch} from 'react-redux';
+import {userActions} from '../../store/User.slice.ts';
 
 export default function Login() {
 	const [error, setError] = useState<boolean>(false);
-	const {setStorageValue} = useContext(AuthContext);
 	const navigate = useNavigate();
+	const dispatch = useDispatch<AppDispatch>();
+
+	interface LoginForm {
+		loginName: {
+			value: string;
+		}
+	}
 
 	async function personLogin(e: FormEvent) {
 		e.preventDefault();
@@ -21,7 +28,7 @@ export default function Login() {
 			setError(true);
 		} else {
 			setError(false);
-			setStorageValue(loginName.value);
+			dispatch(userActions.login(loginName.value));
 			navigate('/');
 		}
 	}

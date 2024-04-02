@@ -6,9 +6,9 @@ interface CardFilmFavoritesProps {
 	className?:string;
 }
 
-export default function CardFilmFavorites({isFavorite, className}: CardFilmFavoritesProps) {
+export default function CardFilmFavorites<CardFilmFavoritesProps>({isFavorite, className, ...props}) {
 	return (
-		<div className={cn(styles.favorite, className, {
+		<div {...props} className={cn(styles.favorite, className, {
 			[styles.favoriteTrue]: isFavorite,
 			[styles.favoriteFalse]: !isFavorite
 		}

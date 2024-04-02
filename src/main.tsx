@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import './App.css';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
-import AuthUserContext from './context/AuthUser.context.tsx';
 import Main from './pages/Main/Main.tsx';
 import Error from './pages/Error/Error.tsx';
 import Login from './pages/Login/Login.tsx';
@@ -13,6 +12,8 @@ import CheckAuth from './heplers/CheсkAuth.tsx';
 import AuthLayout from './Layout/Auth/AuthLayout.tsx';
 import BodyLayout from './Layout/Body/BodyLayout.tsx';
 import Movie, {loader} from './pages/Movie/Movie.tsx';
+import {Provider} from 'react-redux';
+import store from './store/store.ts';
 
 
 const router = createBrowserRouter([
@@ -59,9 +60,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-	<AuthUserContext>
+	<Provider store={store}>
 		<React.StrictMode>
 			<RouterProvider router={router}/>
 		</React.StrictMode>
-	</AuthUserContext>
+	</Provider>
 );

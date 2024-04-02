@@ -8,6 +8,7 @@ import {DEFAULT_URL, options} from '../../heplers/API.ts';
 
 // https://reactrouter.com/en/main/guides/deferred
 
+// @ts-ignore
 export function loader({ params }){
 	return defer({
 		data: new Promise((resolve, reject) => {
