@@ -11,7 +11,6 @@ export const USER_STATE_DEFAULT: StateProps = {
 	isLogin: false
 };
 
-//const initialState = loadState('userData') ?? USER_STATE_DEFAULT;
 const initialState = loadState('userData') ?? USER_STATE_DEFAULT;
 
 export const userSlice = createSlice({

@@ -4,10 +4,22 @@ import CardFilmRate from '../CardFilm/CardFilmRate/CardFilmRate.tsx';
 import CardFilmFavorites from '../CardFilm/CardFilmFavorites/CardFilmFavorites.tsx';
 import styles from './CardItem.module.css';
 import TextParagraph from '../TextParagraph/TextParagraph.tsx';
+import {useEffect, useState} from 'react';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store/store.ts';
 
 export default function CardItem(props: { results: FilmData }) {
 
+	const [favorite, setFavorite] = useState<boolean>(false);
+	const favoriteItem = useSelector((selector: RootState) => selector.favorite);
 	const filmData = props.results;
+
+	useEffect(() => { 
+		const index = favoriteItem.findIndex((item: FilmData) => item.id === filmData.id);
+		if (index !== -1) {
+			setFavorite(!favorite);
+		}
+	}, []);
 
 	return (
 		<article>
@@ -23,7 +35,7 @@ export default function CardItem(props: { results: FilmData }) {
 					</TextParagraph>
 					<div className={styles.additionalDetails}>
 						<CardFilmRate className={styles.rate} rate={filmData.position}/>
-						<CardFilmFavorites className={styles.isFavorite} isFavorite={false} />
+						<CardFilmFavorites className={styles.isFavorite} isFavorite={favorite} />
 					</div>
 					<dl className={styles.propertyList}>
 						<dt className={styles.subTitle}>Тип</dt>

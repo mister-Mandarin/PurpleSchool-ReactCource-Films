@@ -13,7 +13,7 @@ const store = configureStore({
 // в случае изменения состояния переписываем состояние
 store.subscribe(() => {
 	saveState(store.getState().user, 'userData');
-	//saveState(store.getState().cart.items, 'cart');
+	saveState(store.getState().favorite, 'favorite');
 });
 
 export type RootState = ReturnType<typeof store.getState>;
