@@ -1,8 +1,8 @@
-import styles from './Body.module.css';
+import styles from '../Layout.module.css';
 import Header from '../Header/Header.tsx';
 import {Outlet} from 'react-router-dom';
 
-export default function Body() {
+export default function BodyLayout() {
 	return (
 		<>
 			<Header />

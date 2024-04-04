@@ -1,17 +1,48 @@
-import {useParams} from 'react-router-dom';
-import {useContext} from 'react';
+import {Await, defer, useLoaderData} from 'react-router-dom';
+import {Suspense} from 'react';
+import {CardsFieldProps} from '../../components/CardsField/CardsField.props.ts';
+import Error from '../Error/Error.tsx';
 import CardItem from '../../components/CardItem/CardItem.tsx';
-import {AuthContext} from '../../context/AuthUser.context.tsx';
-import {FilmDataFull} from '../../components/CardsField/CardsField.props.ts';
+import {DEFAULT_URL, options} from '../../heplers/API.ts';
 
-export default function Product() {
 
-	const {id} = useParams();
-	const {data} = useContext(AuthContext);
+// https://reactrouter.com/en/main/guides/deferred
 
-	const selectedItem = data.find(el => el.id === Number(id)) as FilmDataFull | undefined;
-
-	if (selectedItem) {
-		return <CardItem {...selectedItem} />;
+export function loader({ params }){
+	return defer({
+		data: new Promise((resolve, reject) => {
+			setTimeout(async () => {
+				try {
+					const response = await fetch(`${DEFAULT_URL}/titles/${params.id}`, options);
+					if (!response.ok) {
+						return;
+					}
+					const data = await response.json();
+					resolve({data} );
+				} catch (error) {
+					console.error('Ошибка!!! ', error);
+					reject(error);
+				}
+			}, 3000);
+		})
 	}
+	);
+}
+
+export default function Movie() {
+
+	const dataResponse = useLoaderData();
+	const {data} = dataResponse as {data: CardsFieldProps};
+
+	console.log('data useLoaderData ', data);
+
+	return (
+		<Suspense fallback={<Error title='Загружаю данные фильма...'/>}>
+			<Await resolve={data}>
+				{({data}) => (
+					<CardItem {...data} />
+				)}
+			</Await>
+		</Suspense>
+	);
 }
