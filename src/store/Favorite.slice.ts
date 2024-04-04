@@ -5,7 +5,6 @@ import {FilmData} from '../components/CardsField/CardsField.props.ts';
 const initialState = loadState('favorite') ?? [];
 
 export const favoriteSlice = createSlice({
-	// название слайса
 	name: 'user/favorite',
 	initialState, 
 	reducers: {
@@ -13,9 +12,7 @@ export const favoriteSlice = createSlice({
 			const existing = state.find((item: FilmData) => item.id === action.payload.id);
 			if (!existing) {
 				state.push(action.payload);
-				return;
 			}
-			return;
 		},
 		removeFavorite: (state, action) => {
 			const index = state.findIndex((item: FilmData) => item.id === action.payload.id);

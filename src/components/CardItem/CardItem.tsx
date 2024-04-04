@@ -34,8 +34,8 @@ export default function CardItem(props: { results: FilmData }) {
 						{filmData.primaryImage.caption.plainText}
 					</TextParagraph>
 					<div className={styles.additionalDetails}>
-						<CardFilmRate className={styles.rate} rate={filmData.position}/>
-						<CardFilmFavorites className={styles.isFavorite} isFavorite={favorite} />
+						<CardFilmRate className={styles.rate} rate={filmData.releaseDate.year}/>
+						<CardFilmFavorites props={filmData} className={styles.isFavorite}/>
 					</div>
 					<dl className={styles.propertyList}>
 						<dt className={styles.subTitle}>Тип</dt>
