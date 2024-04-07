@@ -1,15 +1,17 @@
 import HeaderLink from '../HeaderLink/HeaderLink.tsx';
-import {useContext} from 'react';
-import {AuthContext} from '../../../context/AuthUser.context.tsx';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppDispatch, RootState} from '../../../store/store.ts';
+import {userActions} from '../../../store/User.slice.ts';
 
 export default function Auth() {
-	const {setDefaultValue, authState} = useContext(AuthContext);
+	const dispatch = useDispatch<AppDispatch>();
+	const user = useSelector((selector: RootState) => selector.user);
 
 	function logOut() {
-		setDefaultValue();
+		dispatch(userActions.logout());
 	}
 
-	if (!authState.isLogin) {
+	if (!user.isLogin) {
 		return (
 			<HeaderLink to='/login' icon='login'>
 				Войти
@@ -20,7 +22,7 @@ export default function Auth() {
 	return (
 		<>
 			<HeaderLink to='/profile' icon="user">
-				{authState.name}
+				{user.name}
 			</HeaderLink>
 			<HeaderLink to='/login' onClick={logOut}>
 					Выйти

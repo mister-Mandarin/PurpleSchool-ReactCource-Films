@@ -1,13 +1,16 @@
 import TextTitle from '../../components/TextTitle/TextTitle.tsx';
 import TextParagraph from '../../components/TextParagraph/TextParagraph.tsx';
-//import styles from '../../components/CardsField/CardsField.module.css';
-//import CardFilm from '../../components/CardFilm/CardFilm.tsx';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store/store.ts';
+import CardFilm from '../../components/CardFilm/CardFilm.tsx';
+import styles from './Favorites.module.css';
+import {FilmData} from '../../components/CardsField/CardsField.props.ts';
 
 export default function Favorites() {
 
-	const data = {};
+	const favoriteItem = useSelector((selector: RootState) => selector.favorite);
 
-	if (!data) {
+	if (!favoriteItem) {
 		return(
 			<>
 				<TextTitle Tag='h1'>
@@ -26,18 +29,18 @@ export default function Favorites() {
                 Избранное
 			</TextTitle>
 
-			{/*<div className={styles.cardsField}>*/}
-			{/*	{data.map(el => {*/}
-			{/*		if (el.id && el.isFavorite) {*/}
-			{/*			return (*/}
-			{/*				<CardFilm*/}
-			{/*					key={el.id}*/}
-			{/*					{...el}*/}
-			{/*				/>*/}
-			{/*			);*/}
-			{/*		}*/}
-			{/*	})}*/}
-			{/*</div>*/}
+			<div className={styles.cardsField}>
+				{favoriteItem.map((el: FilmData) => {
+					if (el.id) {
+						return (
+							<CardFilm
+								key={el.id}
+								{...el}
+							/>
+						);
+					}
+				})}
+			</div>
 		</>
 	);
 }

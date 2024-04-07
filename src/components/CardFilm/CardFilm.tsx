@@ -9,10 +9,10 @@ export default function CardFilm(props: FilmData) {
 	return (
 		<Link to={`/movie/${props.id}`} className={styles.link}>
 			<div className={styles.card}>
-				{props.position && <CardFilmRate rate={props.position}/>}
+				{props.releaseDate.year && <CardFilmRate rate={props.releaseDate.year}/>}
 				<img src={props.primaryImage?.url} alt=""/>
 				{props.originalTitleText.text && <span>{props.originalTitleText.text || ''}</span>}
-				<CardFilmFavorites isFavorite={false}/>
+				<CardFilmFavorites props={props}/>
 			</div>
 		</Link>
 	);
